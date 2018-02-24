@@ -70,8 +70,12 @@ let h = theSinc(n: n, freqCutoff: 2*freq_cutoff)
 let N = sLimit*2.0;
 let bn = Array(stride(from: 0.0, to: N, by: 1.0))
 
-let blackmanWindow = bn.map{0.42 - 0.5*_cos(2*Double.pi*$0/(N-1)) +
-                                  0.08*_cos(4*Double.pi*$0/(N-1))}
+// broken into pieces because Matt's laptop sucks
+let firstblackmanWindow = bn.map{0.42 - 0.5*_cos(2*Double.pi*$0/(N-1))}
+let secondblackmanWindow = bn.map{0.08*_cos(4*Double.pi*$0/(N-1))}
+let blackmanWindow = zip(firstblackmanWindow, secondblackmanWindow).map{$0 + $1}
+//let blackmanWindow = bn.map{0.42 - 0.5*_cos(2*Double.pi*$0/(N-1)) +
+//                                  0.08*_cos(4*Double.pi*$0/(N-1))}
 let hBlackMan = zip(h, blackmanWindow).map{$0 * $1}
 let hBlackManSum = hBlackMan.reduce(0.0, +)
 let hNorm = hBlackMan.map{$0 / hBlackManSum}
