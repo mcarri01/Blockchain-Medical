@@ -22,12 +22,12 @@ ylim([-1 2]);
 
 delayRange = 2*delay + 1;
 % use MatLab filter command to compute output
-L = filter(ones(1,delayRange)/delayRange,1,[inputDelay zeros(1,delay)]);
-outputMatLab = L(delay:end);
-figure;
-% plot moving average output due to MatLab
-plot(outputMatLab, 'lineWidth', 2);
-ylim([-1 2]);
+% L = filter(ones(1,delayRange)/delayRange,1,[inputDelay zeros(1,delay)]);
+% outputMatLab = L(delay:end);
+% figure;
+% % plot moving average output due to MatLab
+% plot(outputMatLab, 'lineWidth', 2);
+% ylim([-1 2]);
 
 inputDelayLen = length(inputDelay);
 % compute moving average filtee without MatLab via brute force additon

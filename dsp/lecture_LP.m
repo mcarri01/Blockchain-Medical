@@ -117,14 +117,14 @@ ylim([-1.25 1.25]);
 % ==========
 % MARK: dsp functions
 function s = theSinc(n, freqCutoff)
-for i = 1:length(n);
-        sx = freqCutoff*n(i);
-        if n(i) == 0
-            s(i) = 1;
-        else
-            s(i) = sin(pi*sx) / (pi*sx);
-        end
-end
+    for i = 1:length(n);
+            sx = freqCutoff*n(i);
+            if n(i) == 0
+                s(i) = 1;
+            else
+                s(i) = sin(pi*sx) / (pi*sx);
+            end
+    end
 end
 
 function s = theSum(f)
