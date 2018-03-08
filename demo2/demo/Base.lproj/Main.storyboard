@@ -25,14 +25,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0aA-sn-7UO">
                                 <rect key="frame" x="32" y="36" width="311" height="615"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhK-8w-WVS" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="330"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JFV-o8-msm">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="527"/>
+                                        <rect key="frame" x="0.0" y="330" width="311" height="198"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="198" id="3Ad-YF-DUt"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93y-RG-vxE">
-                                        <rect key="frame" x="0.0" y="527" width="311" height="58"/>
+                                        <rect key="frame" x="0.0" y="528" width="311" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="57" id="hhN-QW-a1G"/>
+                                        </constraints>
                                         <state key="normal" title="Connect"/>
                                         <connections>
                                             <action selector="connectButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Xc-Px-mGh"/>
@@ -57,6 +67,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chtChart" destination="LhK-8w-WVS" id="gan-dE-R93"/>
                         <outlet property="textView" destination="JFV-o8-msm" id="3lP-Nj-elk"/>
                     </connections>
                 </viewController>

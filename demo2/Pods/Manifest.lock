@@ -1,12 +1,17 @@
 PODS:
+  - Charts (3.0.5):
+    - Charts/Core (= 3.0.5)
+  - Charts/Core (3.0.5)
   - SwiftSocket (2.0.2)
 
 DEPENDENCIES:
-  - SwiftSocket (= 2.0.2)
+  - Charts
+  - SwiftSocket
 
 SPEC CHECKSUMS:
+  Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
 
-PODFILE CHECKSUM: 9819ac94b17767913467b1ed60cc710d96e68d8b
+PODFILE CHECKSUM: ff1a2c7c548113edcf03dec7fab93ee1e75723d4
 
 COCOAPODS: 1.4.0
