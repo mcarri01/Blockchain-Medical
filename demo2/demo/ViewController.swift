@@ -2,6 +2,7 @@ import UIKit
 import SwiftSocket
 import Charts
 
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
@@ -10,8 +11,8 @@ class ViewController: UIViewController {
     
     var numbers : [Double] = [  ]
     
-    let host = "10.0.0.93"
-    let port = 9998
+    let host = "10.3.13.119"
+    let port = 9999
     var client: TCPClient?
     var streamFlag = false
     //var connected = false
@@ -25,7 +26,22 @@ class ViewController: UIViewController {
         
     }
     
+    /*
+     keyword
+     
+     
+     (flag) what data is coming in
+ 
+ 
+ 
+     */
+    
+    
     @IBAction func connectButtonAction() {
+        
+        let d = pack("<h2I3sf", [1, 2, 3, "asd", 0.5])
+        assert(d == unhexlify("0100 02000000 03000000 617364 0000003f"))
+        
         guard let client = client else { return }
         updateGraph()
         switch client.connect(timeout: 10) {
@@ -48,20 +64,20 @@ class ViewController: UIViewController {
     }
     
     
-    private func sendRequest(string: String, using client: TCPClient) -> String? {
-        appendToTextField(string: "Sending data ... ")
-        
-        switch client.send(string: string) {
-        case .success:
-            return readResponse(from: client)
-        case .failure(let error):
-            appendToTextField(string: String(describing: error))
-            return nil
-        }
-    }
+//    private func sendRequest(string: String, using client: TCPClient) -> String? {
+//        appendToTextField(string: "Sending data ... ")
+//
+//        switch client.send(string: string) {
+//        case .success:
+//            return readResponse(from: client)
+//        case .failure(let error):
+//            appendToTextField(string: String(describing: error))
+//            return nil
+//        }
+//    }
     
-    private func readResponse(from client: TCPClient) -> String? {
-        guard let response = client.read(1) else { return nil }
+    private func readResponse(from client: TCPClient, count: Int) -> String? {
+        guard let response = client.read(count) else { return nil }
         return String(bytes: response, encoding: .utf8)
     }
     
@@ -72,22 +88,24 @@ class ViewController: UIViewController {
     
     
     private func streamData() {
-        guard let client = client else { return }
+        //guard let client = client else { return }
         while true {
             
             if streamFlag {
-                var toAppend = ""
-                if let response = readResponse(from: client) {
-                    numbers.append(Double(response)!)
-                    //updateGraph()
-                    toAppend = "response is '\(response)'"
+                //var toAppend = ""
+                let header = readHeader()
                     
-                    
-                    DispatchQueue.main.async {
-                        self.appendToTextField(string: toAppend)
-                        self.updateGraph()
-                    }
-                } /*else {
+                //numbers.append(Double(response)!)
+                //updateGraph()
+                //toAppend = "response is '\(response)'"
+                
+                readData(flag: header.flag, count: header.count)
+                
+                DispatchQueue.main.async {
+                //    self.appendToTextField(string: toAppend)
+                    self.updateGraph()
+                }
+                 /*else {
                     toAppend = "response is bad"
                 }*/
 //                DispatchQueue.main.async {
@@ -103,7 +121,7 @@ class ViewController: UIViewController {
         
         var lineChartEntry  = [ChartDataEntry]() //this is the Array that will eventually be displayed on the graph.
         
-        print("hereer")
+
         //here is the for loop
         for i in 0..<numbers.count {
             
@@ -120,6 +138,51 @@ class ViewController: UIViewController {
         
         chtChart.data = data //finally - it adds the chart data to the chart and causes an update
         chtChart.chartDescription?.text = "My awesome chart" // Here we set the description for the graph
+    }
+    
+    
+    func readHeader() -> (flag: Int, count: Int){
+        guard let client = client else { return (-1, -1) }
+        let header = readResponse(from: client, count: 16)
+        
+        let header_arr_try = try? unpack("! 8s I I", unhexlify(header!)!)
+        guard let header_arr = header_arr_try else {
+            return (-1, -1)
+        }
+        
+        if header_arr[0] as? String == "tomsucks" {
+            let flag = header_arr[1] as! Int
+            let count = header_arr[2] as! Int
+            return (flag, count)
+        } else {
+            return (0,0)
+        }
+        
+    }
+    
+    func readData(flag: Int, count: Int) {
+        guard let client = client else { return }
+        
+        switch flag {
+        case 0:
+            let response = readResponse(from: client, count: count*4)
+         
+            
+            let data_arr_try = try? unpack("! " + String(count) + "I", unhexlify(response!)!)
+            guard let data_arr = data_arr_try else {
+                return
+            }
+            
+            numbers = data_arr.map {$0 as! Double }
+            
+            
+           
+            
+            
+        default:
+            return
+        }
+        
     }
     
     
