@@ -11,8 +11,8 @@ class ViewController: UIViewController {
     
     var numbers : [Double] = [  ]
     
-    let host = "10.3.13.119"
-    let port = 9999
+    let host = "10.0.0.216"
+    let port = 9995
     var client: TCPClient?
     var streamFlag = false
     //var connected = false
@@ -79,6 +79,8 @@ class ViewController: UIViewController {
     private func readResponse(from client: TCPClient, count: Int) -> String? {
         guard let response = client.read(count) else { return nil }
         return String(bytes: response, encoding: .utf8)
+        //let header_arr_try = try? unpack("!8sII", unhexlify(header!)!)
+        
     }
     
     private func appendToTextField(string: String) {
@@ -111,8 +113,6 @@ class ViewController: UIViewController {
 //                DispatchQueue.main.async {
 //                    self.appendToTextField(string: toAppend)
 //                }
-            } else {
-                print("not reading")
             }
         }
     }
@@ -143,9 +143,11 @@ class ViewController: UIViewController {
     
     func readHeader() -> (flag: Int, count: Int){
         guard let client = client else { return (-1, -1) }
-        let header = readResponse(from: client, count: 16)
-        
-        let header_arr_try = try? unpack("! 8s I I", unhexlify(header!)!)
+        //let header = readResponse(from: client, count: 16)
+        guard let response = client.read(16) else { return (-1, -1)}
+        let test = response.reduce("", {$0 + String(format: "%02x", $1)})
+        print(test)
+        let header_arr_try = try? unpack("!8sII", unhexlify(test)!)
         guard let header_arr = header_arr_try else {
             return (-1, -1)
         }
@@ -165,15 +167,20 @@ class ViewController: UIViewController {
         
         switch flag {
         case 0:
-            let response = readResponse(from: client, count: count*4)
-         
-            
-            let data_arr_try = try? unpack("! " + String(count) + "I", unhexlify(response!)!)
+            //let response = readResponse(from: client, count: count*4)
+            guard let response = client.read(count*4) else { return}
+            let test = response.reduce("", {$0 + String(format: "%02x", $1)})
+            let data_arr_try = try? unpack("! " + String(count) + "I", unhexlify(test)!)
             guard let data_arr = data_arr_try else {
                 return
             }
+            print(data_arr)
+            var new_numbers: [Int] = []
+            for num in data_arr {
+                new_numbers.append(num as! Int)
+            }
             
-            numbers = data_arr.map {$0 as! Double }
+            numbers = new_numbers.map{Double($0)}
             
             
            
