@@ -17,6 +17,7 @@
 		3F865D34204C8D720037829A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F865D32204C8D720037829A /* LaunchScreen.storyboard */; };
 		3F865D3F204C8D720037829A /* demoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F865D3E204C8D720037829A /* demoTests.swift */; };
 		3F865D4A204C8D720037829A /* demoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F865D49204C8D720037829A /* demoUITests.swift */; };
+		9BC1106820657BF800A3B0D5 /* BinUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC1106720657BF800A3B0D5 /* BinUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		3F865D4B204C8D720037829A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6490EB5093199AE3F8768F00 /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		656C198F8C25E5B7070B0B08 /* Pods_demoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BC1106720657BF800A3B0D5 /* BinUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinUtils.swift; sourceTree = "<group>"; };
 		BC493D2329A7FF7BED52760D /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-demo/Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
 		D5819A431240CFE00E7A3D9E /* Pods-demoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-demoUITests/Pods-demoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F68528E3225368BBBFCF82AF /* Pods-demoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-demoUITests/Pods-demoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		3F865D28204C8D720037829A /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				9BC1106720657BF800A3B0D5 /* BinUtils.swift */,
 				3F865D29204C8D720037829A /* AppDelegate.swift */,
 				3F865D2B204C8D720037829A /* ViewController.swift */,
 				3F865D2D204C8D720037829A /* Main.storyboard */,
@@ -329,10 +332,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-demo/Pods-demo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +465,7 @@
 			files = (
 				3F865D2C204C8D720037829A /* ViewController.swift in Sources */,
 				3F865D2A204C8D720037829A /* AppDelegate.swift in Sources */,
+				9BC1106820657BF800A3B0D5 /* BinUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,8 +6,7 @@ target 'demo' do
   use_frameworks!
 
   pod 'SwiftSocket'
-
-
+  pod 'Charts'
   # Pods for demo
 
   target 'demoTests' do
