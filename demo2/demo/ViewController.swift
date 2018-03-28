@@ -1,5 +1,6 @@
 import UIKit
-import SwiftSocket
+import Socket
+import SSLService
 import Charts
 
 
@@ -12,141 +13,83 @@ class ViewController: UIViewController {
     var numbers : [Double] = [  ]
     
     let host = "10.0.0.216"
-    let port = 9995
-    var client: TCPClient?
-    var streamFlag = false
-    //var connected = false
+    let port = 9990
+    let socket = try? Socket.create()
+    let myConfig = SSLService.Configuration()
     
+    var streamFlag = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        client = TCPClient(address: host, port: Int32(port))
-        
-        
+        guard let socket = socket else {
+            return
+        }
+        socket.delegate = try! SSLService(usingConfiguration: myConfig)
     }
     
-    /*
-     keyword
-     
-     
-     (flag) what data is coming in
- 
- 
- 
-     */
-    
-    
     @IBAction func connectButtonAction() {
-        
-        let d = pack("<h2I3sf", [1, 2, 3, "asd", 0.5])
-        assert(d == unhexlify("0100 02000000 03000000 617364 0000003f"))
-        
-        guard let client = client else { return }
+        guard let client = socket else { return }
         updateGraph()
-        switch client.connect(timeout: 10) {
-        case .success:
-            appendToTextField(string: "Connected to host \(client.address)")
+        do {
+            try client.connect(to: host, port: Int32(port), timeout: 10)
+            appendToTextField(string: "Connected to host \(host) on port \(port)")
             DispatchQueue.global(qos: .background).async {
                 self.streamData()
             }
-            
-
-        case .failure(let error):
-            appendToTextField(string: String(describing: error))
-            appendToTextField(string: "wee")
+        } catch {
+            appendToTextField(string: "Cannot connect to host")
         }
-        
     }
     
     @IBAction func readButtonAction() {
         streamFlag = !streamFlag
     }
     
-    
-//    private func sendRequest(string: String, using client: TCPClient) -> String? {
-//        appendToTextField(string: "Sending data ... ")
-//
-//        switch client.send(string: string) {
-//        case .success:
-//            return readResponse(from: client)
-//        case .failure(let error):
-//            appendToTextField(string: String(describing: error))
-//            return nil
-//        }
-//    }
-    
-    private func readResponse(from client: TCPClient, count: Int) -> String? {
-        guard let response = client.read(count) else { return nil }
-        return String(bytes: response, encoding: .utf8)
-        //let header_arr_try = try? unpack("!8sII", unhexlify(header!)!)
-        
+    private func readResponse(count: Int) -> Data? {
+        guard let socket = socket else { return nil }
+        let readData = UnsafeMutablePointer<CChar>.allocate(capacity: count)
+        let _ = try? socket.read(into: readData, bufSize: count, truncate: true)
+        return Data(bytesNoCopy: readData, count: count, deallocator: .none)
     }
     
     private func appendToTextField(string: String) {
-        print(string)
         textView.text = textView.text.appending("\n\(string)")
     }
     
-    
     private func streamData() {
-        //guard let client = client else { return }
         while true {
-            
             if streamFlag {
-                //var toAppend = ""
                 let header = readHeader()
-                    
-                //numbers.append(Double(response)!)
-                //updateGraph()
-                //toAppend = "response is '\(response)'"
-                
                 readData(flag: header.flag, count: header.count)
                 
                 DispatchQueue.main.async {
-                //    self.appendToTextField(string: toAppend)
                     self.updateGraph()
                 }
-                 /*else {
-                    toAppend = "response is bad"
-                }*/
-//                DispatchQueue.main.async {
-//                    self.appendToTextField(string: toAppend)
-//                }
             }
         }
     }
     
     func updateGraph(){
         
-        var lineChartEntry  = [ChartDataEntry]() //this is the Array that will eventually be displayed on the graph.
+        var lineChartEntry  = [ChartDataEntry]() //this is the Array that will eventually be displayed
         
-
-        //here is the for loop
         for i in 0..<numbers.count {
-            
             let value = ChartDataEntry(x: Double(i), y: numbers[i]) // here we set the X and Y status in a data chart entry
             lineChartEntry.append(value) // here we add it to the data set
         }
-        
         let line1 = LineChartDataSet(values: lineChartEntry, label: "Number") //Here we convert lineChartEntry to a LineChartDataSet
         line1.colors = [NSUIColor.blue] //Sets the colour to blue
         
         let data = LineChartData() //This is the object that will be added to the chart
         data.addDataSet(line1) //Adds the line to the dataSet
         
-        
         chtChart.data = data //finally - it adds the chart data to the chart and causes an update
         chtChart.chartDescription?.text = "My awesome chart" // Here we set the description for the graph
     }
     
-    
     func readHeader() -> (flag: Int, count: Int){
-        guard let client = client else { return (-1, -1) }
-        //let header = readResponse(from: client, count: 16)
-        guard let response = client.read(16) else { return (-1, -1)}
-        let test = response.reduce("", {$0 + String(format: "%02x", $1)})
-        print(test)
+        let response = readResponse(count: 16)
+        let test = response!.reduce("", {$0 + String(format: "%02x", $1)})
         let header_arr_try = try? unpack("!8sII", unhexlify(test)!)
         guard let header_arr = header_arr_try else {
             return (-1, -1)
@@ -163,34 +106,23 @@ class ViewController: UIViewController {
     }
     
     func readData(flag: Int, count: Int) {
-        guard let client = client else { return }
-        
         switch flag {
         case 0:
-            //let response = readResponse(from: client, count: count*4)
-            guard let response = client.read(count*4) else { return}
-            let test = response.reduce("", {$0 + String(format: "%02x", $1)})
+            let response = readResponse(count: count*4)
+            let test = response!.reduce("", {$0 + String(format: "%02x", $1)})
             let data_arr_try = try? unpack("! " + String(count) + "I", unhexlify(test)!)
             guard let data_arr = data_arr_try else {
                 return
             }
-            print(data_arr)
             var new_numbers: [Int] = []
             for num in data_arr {
                 new_numbers.append(num as! Int)
             }
             
             numbers = new_numbers.map{Double($0)}
-            
-            
-           
-            
-            
+
         default:
             return
         }
-        
     }
-    
-    
 }
