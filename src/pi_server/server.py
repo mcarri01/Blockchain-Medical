@@ -6,14 +6,16 @@ from math import floor
 from time import sleep
 import ssl
 
+
+ssl_keyfile = "/home/pi/Desktop/keys/key.pem"
+ssl_certfile = "/home/pi/Desktop/keys/cert.pem"
+
 HOST = '10.0.0.216'
-PORT = 9994
+PORT = 9990
 def main():
     global TOTAL_SENT
-
     # initialize the socket
     sock = init_socket()
-
     if sock == None:
         return
 
@@ -22,8 +24,16 @@ def main():
     data = generateRandomData()
     while True:
         # wait for connection
-        try:
+        #try:
+            print "before"
             connection, client_address = sock.accept()
+            print "after"
+            connstream = ssl.wrap_socket(connection, 
+                                            server_side=True,
+                                            certfile = ssl_certfile,
+                                            keyfile = ssl_keyfile,
+                                            ssl_version = ssl.PROTOCOL_TLSv1
+                                        )
             print "Received Connection"
             while True:
                 sleep(0.5)
@@ -33,15 +43,13 @@ def main():
 
                 data_packer = struct.Struct('! 10I')
                 packed_data = data_packer.pack(*tuple(data))
-                connection.sendall(packed_header + packed_data)
-                #data = map(lambda x: x + 1, data)
+                connstream.sendall(packed_header + packed_data)
                 data = generateRandomData()
                 print data
-                #connection.sendall(str(int(floor(random() * 10))))
-        except KeyboardInterrupt:
-            connection.close()
-        finally:
-            connection.close()
+        #except KeyboardInterrupt:
+        #    connstream.close()
+        #finally:
+        #    connstream.close()
 
 def generateRandomData():
     ret = []
@@ -63,9 +71,7 @@ def init_socket():
         return None
 
     sock.listen(1)
-    #wrappedSocket = ssl.wrap_socket(sock, ssl_version=ssl.PROTOCOL_TLSv1, ciphers="ADH-AES256-SHA")
 
-    #return wrappedSocket
     return sock
 
 if __name__ == '__main__':
