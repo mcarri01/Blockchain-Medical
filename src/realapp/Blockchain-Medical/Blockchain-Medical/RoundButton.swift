@@ -42,7 +42,7 @@ class RoundButton: UIButton {
             let bounds = UIScreen.main.bounds
             // iphone SE has 320 width
             if bounds.width > 320 {
-                return CGSize(width: 80, height: 80)
+                return CGSize(width: 150, height: 150)
             } else {
                 return CGSize(width: 50, height: 50) // smaller button size!
             }
