@@ -15,6 +15,7 @@ class FourthViewController: UIViewController{
     @IBOutlet weak var Button8: RoundButton!
     
     @IBOutlet weak var label7: UILabel!
+    //@IBOutlet weak var label7: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

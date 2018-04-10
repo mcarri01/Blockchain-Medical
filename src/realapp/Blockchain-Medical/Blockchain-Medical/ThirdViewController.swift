@@ -14,6 +14,7 @@ class ThirdViewController: UIViewController {
     @IBOutlet weak var Button2: RoundButton!
     @IBOutlet weak var Button3: RoundButton!
     @IBOutlet weak var Button4: RoundButton!
+    
     @IBOutlet weak var label3: UILabel!
     
     override func viewDidLoad() {
@@ -42,6 +43,7 @@ class ThirdViewController: UIViewController {
         Button3.center = CGPoint(x: self.view.center.x / 2.0, y: self.view.center.y * 4/3)
         label3.text = "Heart Rate"
         label3.center = CGPoint(x: self.view.center.x/2.0, y: self.view.center.y * 4/3 + test.frame.height/4.0)
+        label3.font = label3.font.withSize(test.frame.size.width/160 * 17.0)
         
         Button4.setTitle("300", for: [])
         Button4.frame.size = getSizeForButton()
