@@ -1,0 +1,27 @@
+PODS:
+  - BlueSocket (1.0.2)
+  - BlueSSLService (1.0.2):
+    - BlueSocket (~> 1.0.2)
+  - Charts (3.1.1):
+    - Charts/Core (= 3.1.1)
+  - Charts/Core (3.1.1)
+
+DEPENDENCIES:
+  - BlueSocket
+  - BlueSSLService
+  - Charts
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - BlueSocket
+    - BlueSSLService
+    - Charts
+
+SPEC CHECKSUMS:
+  BlueSocket: 21ed13d0cce712a876a169a4d091ac00db2c3e70
+  BlueSSLService: 3c818b79fd3813b480bcbedb8f560516d28ed472
+  Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
+
+PODFILE CHECKSUM: eb39dfb50af94304304e93899cf6fe25a5f3605e
+
+COCOAPODS: 1.5.0

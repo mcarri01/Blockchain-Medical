@@ -270,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="1512.8" y="-1504.4977511244379"/>
         </scene>
-        <!--View Controller-->
+        <!--Vital Display-->
         <scene sceneID="lFZ-pS-qvm">
             <objects>
-                <viewController id="Usd-FG-SGE" sceneMemberID="viewController">
+                <viewController id="Usd-FG-SGE" customClass="VitalDisplay" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5b5-hU-Ngf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

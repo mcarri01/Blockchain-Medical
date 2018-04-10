@@ -1,0 +1,6 @@
+framework module Pods_Blockchain_MedicalUITests {
+  umbrella header "Pods-Blockchain-MedicalUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
