@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,7 +38,6 @@
 		358768F88E772F4647ABC89090218A1F /* CombinedChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95266F9E8D197E63BD6CCEADEE04E2F4 /* CombinedChartData.swift */; };
 		35A0B12574F0BABB945B4EA2808813D5 /* BlueSSLService-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC60819302B1B8A106380D2356D3438 /* BlueSSLService-dummy.m */; };
 		36FB477816CAD11896C74839F670C978 /* BarChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38B6BCA9C53F7FD0DE6F50FB1EA394 /* BarChartData.swift */; };
-		3AC1624E17DACAC3AEA1D9543E58ED55 /* DataApproximator+N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3707BAA607B95E3B1B3ADC8A543B4D55 /* DataApproximator+N.swift */; };
 		3AC9A6193ACBB2022412D554C807ECA4 /* BarChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD931DB5CB286901D5AD6C08E86B7F1D /* BarChartDataProvider.swift */; };
 		3C08FD7959BD8AB4EEFE90F812CE0331 /* ZoomViewJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF1595722760E8F4E2D2FD8908BDE2 /* ZoomViewJob.swift */; };
 		3C93FB4B67CCE624CDB59AB77B0D93E7 /* ICandleChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9EC8B4DEFFF49490ECA2A7D448D9B /* ICandleChartDataSet.swift */; };
@@ -240,7 +239,7 @@
 		1B43894CC936530026BFB237ED0C6CB7 /* Pods-Blockchain-Medical-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Blockchain-Medical-dummy.m"; sourceTree = "<group>"; };
 		1B89993C05F5A2A82F4B7206112B8678 /* RadarChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartData.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartData.swift; sourceTree = "<group>"; };
 		1D0537F260545014E20A29E01EA37510 /* DefaultValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultValueFormatter.swift; path = Source/Charts/Formatters/DefaultValueFormatter.swift; sourceTree = "<group>"; };
-		1E3FE02982346F778CBDE82599F39231 /* Pods_Blockchain_MedicalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Blockchain_MedicalUITests.framework; path = "Pods-Blockchain-MedicalUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E3FE02982346F778CBDE82599F39231 /* Pods_Blockchain_MedicalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blockchain_MedicalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F89CADB4F2BB2494386FC43BA39E599 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		1FB0C9A3494D883275CCBB874B1F8A98 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		233EC766CAFB7FD53AD771B262CABFAD /* BlueSSLService-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BlueSSLService-prefix.pch"; sourceTree = "<group>"; };
@@ -257,7 +256,6 @@
 		2D9614ABCC017CDA96D7409F324D4920 /* Pods-Blockchain-MedicalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Blockchain-MedicalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		308A96E93268AD6ECFE147303DC0B4FE /* Charts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Charts-dummy.m"; sourceTree = "<group>"; };
 		30ECEF8084904BB70DEF036694FC6DC7 /* IScatterChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IScatterChartDataSet.swift; path = Source/Charts/Data/Interfaces/IScatterChartDataSet.swift; sourceTree = "<group>"; };
-		3707BAA607B95E3B1B3ADC8A543B4D55 /* DataApproximator+N.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DataApproximator+N.swift"; path = "Source/Charts/Filters/DataApproximator+N.swift"; sourceTree = "<group>"; };
 		37FA75BB7D001D0224AC11DE20CB3F91 /* CombinedHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedHighlighter.swift; path = Source/Charts/Highlight/CombinedHighlighter.swift; sourceTree = "<group>"; };
 		37FA855B9E2442A4840C1439A169775A /* AnimatedZoomViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedZoomViewJob.swift; path = Source/Charts/Jobs/AnimatedZoomViewJob.swift; sourceTree = "<group>"; };
 		39770142CB800139F0345B3953420145 /* HorizontalBarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HorizontalBarHighlighter.swift; path = Source/Charts/Highlight/HorizontalBarHighlighter.swift; sourceTree = "<group>"; };
@@ -270,7 +268,7 @@
 		40303B8A069C795CDC2F94AB6FC170D4 /* BlueSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BlueSocket-prefix.pch"; sourceTree = "<group>"; };
 		404C9226E332B08E6A58C681626AEF4C /* ChartBaseDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartBaseDataSet.swift; path = Source/Charts/Data/Implementations/ChartBaseDataSet.swift; sourceTree = "<group>"; };
 		40C2DE3C0E8928A8FC9D51A01117D29D /* BubbleChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartData.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartData.swift; sourceTree = "<group>"; };
-		416B6DB9B2323CD9F13B85E5196B16E8 /* SSLService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SSLService.framework; path = BlueSSLService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		416B6DB9B2323CD9F13B85E5196B16E8 /* SSLService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSLService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		416EDFEAED01182314EE506337DBE9DF /* XShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/XShapeRenderer.swift; sourceTree = "<group>"; };
 		42664AB73B6FACB89F0C57304DCCF312 /* AnimatedViewPortJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedViewPortJob.swift; path = Source/Charts/Jobs/AnimatedViewPortJob.swift; sourceTree = "<group>"; };
 		445FC1D296DE3792D8A3C26CEE9DD29F /* ChartColorTemplates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartColorTemplates.swift; path = Source/Charts/Utils/ChartColorTemplates.swift; sourceTree = "<group>"; };
@@ -297,7 +295,7 @@
 		5883DBE61840681A17F1B2BF700E484D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59301A40E8DC34B1772C88CB178E60C3 /* Pods-Blockchain-MedicalTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Blockchain-MedicalTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5AC74D8E7F814F3607936D61F428E3E3 /* BubbleChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartDataEntry.swift; sourceTree = "<group>"; };
-		5B362F49AB2AE8F67AF16A75A6FE8DAD /* Pods_Blockchain_MedicalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Blockchain_MedicalTests.framework; path = "Pods-Blockchain-MedicalTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B362F49AB2AE8F67AF16A75A6FE8DAD /* Pods_Blockchain_MedicalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blockchain_MedicalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E08EBB84A5CEB57EFD2E2C7F03C82B6 /* CandleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataProvider.swift; path = Source/Charts/Interfaces/CandleChartDataProvider.swift; sourceTree = "<group>"; };
 		60CA34A699A02A24F75DE70032950224 /* DefaultFillFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultFillFormatter.swift; path = Source/Charts/Formatters/DefaultFillFormatter.swift; sourceTree = "<group>"; };
 		60EE1DAAAD4A78A93C2E0A46A2D7C68A /* BarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartRenderer.swift; path = Source/Charts/Renderers/BarChartRenderer.swift; sourceTree = "<group>"; };
@@ -322,14 +320,14 @@
 		86FE01AA2957028D29F81447FCE7DB72 /* PieChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/PieChartDataEntry.swift; sourceTree = "<group>"; };
 		8738B6FFFCE9C1AAF4640B67FB012001 /* ScatterChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/ScatterChartDataSet.swift; sourceTree = "<group>"; };
 		87F1B32222F0A9C110B1D2B2A328DE36 /* ChartDataRendererBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataRendererBase.swift; path = Source/Charts/Renderers/ChartDataRendererBase.swift; sourceTree = "<group>"; };
-		87FF3C3B8F2AA383EA66879C193C93DC /* Socket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Socket.framework; path = BlueSocket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87FF3C3B8F2AA383EA66879C193C93DC /* Socket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Socket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8958397F92F009B7642EA117C43053B6 /* Pods-Blockchain-MedicalTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Blockchain-MedicalTests-frameworks.sh"; sourceTree = "<group>"; };
 		89D653D0AFDE0732FA02B8F8012F4EFB /* IRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/IRadarChartDataSet.swift; sourceTree = "<group>"; };
 		8C3C6FC2CA1A05491E189B39B67168F3 /* RadarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartRenderer.swift; path = Source/Charts/Renderers/RadarChartRenderer.swift; sourceTree = "<group>"; };
 		8DE0BF14C70A59061CE43945C087057A /* Socket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = Sources/Socket/Socket.swift; sourceTree = "<group>"; };
 		91F8C716BA323D615BB71B0A4386E72D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		937AE3DEF76A7BB682E0B4219B49B824 /* BarLineChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineChartViewBase.swift; path = Source/Charts/Charts/BarLineChartViewBase.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9506181564D35E72D8D7061A968752A7 /* BarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/BarChartDataEntry.swift; sourceTree = "<group>"; };
 		95266F9E8D197E63BD6CCEADEE04E2F4 /* CombinedChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartData.swift; path = Source/Charts/Data/Implementations/Standard/CombinedChartData.swift; sourceTree = "<group>"; };
 		960CD40A518BB92786A12663EE75CDDB /* ChartAnimationEasing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartAnimationEasing.swift; path = Source/Charts/Animation/ChartAnimationEasing.swift; sourceTree = "<group>"; };
@@ -361,7 +359,7 @@
 		BC0FDFD76A0DCF1CAED369927E84CED9 /* ChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/ChartDataEntry.swift; sourceTree = "<group>"; };
 		BC1725000FA9A1255312CF0BC5870D3D /* IPieChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IPieChartDataSet.swift; path = Source/Charts/Data/Interfaces/IPieChartDataSet.swift; sourceTree = "<group>"; };
 		BE88F99B14CFBFAD8B1E8E49C5D593A3 /* CandleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/CandleChartDataSet.swift; sourceTree = "<group>"; };
-		C00F33677731C6411BB4C2D0E5B18A93 /* Pods_Blockchain_Medical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Blockchain_Medical.framework; path = "Pods-Blockchain-Medical.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00F33677731C6411BB4C2D0E5B18A93 /* Pods_Blockchain_Medical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blockchain_Medical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C03C0F7FEBE52F48E722BD17FD85779C /* Pods-Blockchain-MedicalUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Blockchain-MedicalUITests-resources.sh"; sourceTree = "<group>"; };
 		C2E01AA9BE6BD5325F97D627C501763B /* Pods-Blockchain-Medical-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Blockchain-Medical-frameworks.sh"; sourceTree = "<group>"; };
 		C363233F47D6A1BB14E3BB0E9C5F565D /* BubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartDataSet.swift; sourceTree = "<group>"; };
@@ -369,7 +367,7 @@
 		C59F9A0EC20CF5D2BBFD3332A6B188F3 /* YAxisRendererRadarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRendererRadarChart.swift; path = Source/Charts/Renderers/YAxisRendererRadarChart.swift; sourceTree = "<group>"; };
 		C84AABB03C27B880C6825A13CA6EBDD9 /* Pods-Blockchain-MedicalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Blockchain-MedicalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C8EF284271CD31D87DE829152E320C1E /* Pods-Blockchain-Medical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Blockchain-Medical.release.xcconfig"; sourceTree = "<group>"; };
-		CA485C6F97C03A7E1743DE440749EB54 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Charts.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA485C6F97C03A7E1743DE440749EB54 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD4B620A80AD9EB2048CFC277330922 /* LineRadarRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineRadarRenderer.swift; path = Source/Charts/Renderers/LineRadarRenderer.swift; sourceTree = "<group>"; };
 		CCC95FFDF842406D926860055174DF61 /* HorizontalBarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HorizontalBarChartRenderer.swift; path = Source/Charts/Renderers/HorizontalBarChartRenderer.swift; sourceTree = "<group>"; };
 		CD931DB5CB286901D5AD6C08E86B7F1D /* BarChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataProvider.swift; path = Source/Charts/Interfaces/BarChartDataProvider.swift; sourceTree = "<group>"; };
@@ -521,7 +519,6 @@
 				C3D8A4C83B04138A9E2108A505979A82 /* ComponentBase.swift */,
 				676751D62381254C510EA630B27EF574 /* CrossShapeRenderer.swift */,
 				96E832F7589AF4665B428991E8DE29EE /* DataApproximator.swift */,
-				3707BAA607B95E3B1B3ADC8A543B4D55 /* DataApproximator+N.swift */,
 				8397E29495064537F76B7A7C504BA266 /* DefaultAxisValueFormatter.swift */,
 				60CA34A699A02A24F75DE70032950224 /* DefaultFillFormatter.swift */,
 				1D0537F260545014E20A29E01EA37510 /* DefaultValueFormatter.swift */,
@@ -695,7 +692,6 @@
 				4E58D5496C74F77D19E5A7EB8FED1B75 /* SSLService.swift */,
 				9328FC75165AB7AB4484FA3F27AD9652 /* Support Files */,
 			);
-			name = BlueSSLService;
 			path = BlueSSLService;
 			sourceTree = "<group>";
 		};
@@ -781,7 +777,6 @@
 				F28FD0016BAD9CDE87198799059B070F /* SocketUtils.swift */,
 				2CE18D61AB9B8E13B1A21B886F6FED35 /* Support Files */,
 			);
-			name = BlueSocket;
 			path = BlueSocket;
 			sourceTree = "<group>";
 		};
@@ -791,7 +786,6 @@
 				22793FDFCD9247ED72A92A46A7648C3C /* Core */,
 				AA21A8975D79B9C7D1D963313D8E78AA /* Support Files */,
 			);
-			name = Charts;
 			path = Charts;
 			sourceTree = "<group>";
 		};
@@ -1071,7 +1065,6 @@
 				D5C99BB23C97A332BC297B5965B781A4 /* CombinedHighlighter.swift in Sources */,
 				9512FC6084B2BD1AC845BE76B3F2540C /* ComponentBase.swift in Sources */,
 				416214FA92743FF11B78120FC4734B28 /* CrossShapeRenderer.swift in Sources */,
-				3AC1624E17DACAC3AEA1D9543E58ED55 /* DataApproximator+N.swift in Sources */,
 				8992239AF1272804CEE86F780052CF62 /* DataApproximator.swift in Sources */,
 				69E81189486A414318D77B812FE5BD11 /* DefaultAxisValueFormatter.swift in Sources */,
 				334B19BE6F150C629E49D3E2291D4117 /* DefaultFillFormatter.swift in Sources */,

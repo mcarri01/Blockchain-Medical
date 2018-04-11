@@ -1,22 +1,21 @@
 //
-//  VitalDisplay.swift
+//  VitalViewController.swift
 //  Blockchain-Medical
 //
-//  Created by Emma Pannullo on 4/10/18.
+//  Created by Matthew Carrington-Fair on 4/11/18.
 //  Copyright © 2018 Ben Francis. All rights reserved.
 //
 
 import UIKit
 import Socket
-import SSLService
 import Charts
+import SSLService
 
+class VitalViewController: UIViewController {
 
-class VitalDisplay: UIViewController {
     
-    @IBOutlet weak var chtChart: LineChartView!
     @IBOutlet weak var textView: UITextView!
-    
+    @IBOutlet weak var chtChart: LineChartView!
     var numbers : [Double] = [  ]
     
     let host = "10.0.0.216"
@@ -33,7 +32,7 @@ class VitalDisplay: UIViewController {
         }
         socket.delegate = try! SSLService(usingConfiguration: myConfig)
     }
-
+    
     @IBAction func
         connectButtonAction() {
             guard let client = socket else { return }
@@ -47,14 +46,14 @@ class VitalDisplay: UIViewController {
             } catch {
                 appendToTextField(string: "Cannot connect to host")
             }
-        
-    }
+            
+        }
     
     
     @IBAction func readButtonAction() {
         streamFlag = !streamFlag
     }
-
+    
     private func readResponse(count: Int) -> Data? {
         guard let socket = socket else { return nil }
         let readData = UnsafeMutablePointer<CChar>.allocate(capacity: count)
@@ -135,4 +134,5 @@ class VitalDisplay: UIViewController {
             return
         }
     }
+
 }

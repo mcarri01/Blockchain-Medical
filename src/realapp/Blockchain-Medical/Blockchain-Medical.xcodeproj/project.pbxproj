@@ -12,7 +12,6 @@
 		300D2B11207D202800C9B8BB /* BinUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300D2B10207D202800C9B8BB /* BinUtils.swift */; };
 		300D2B13207D203F00C9B8BB /* test.csr in Resources */ = {isa = PBXBuildFile; fileRef = 300D2B12207D203F00C9B8BB /* test.csr */; };
 		300D2B15207D204400C9B8BB /* test.key in Resources */ = {isa = PBXBuildFile; fileRef = 300D2B14207D204400C9B8BB /* test.key */; };
-		300D2B17207D251000C9B8BB /* VitalDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300D2B16207D251000C9B8BB /* VitalDisplay.swift */; };
 		3F0747082073E8E000E9B7B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0747072073E8E000E9B7B3 /* AppDelegate.swift */; };
 		3F07470A2073E8E000E9B7B3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0747092073E8E000E9B7B3 /* FirstViewController.swift */; };
 		3F07470C2073E8E000E9B7B3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07470B2073E8E000E9B7B3 /* SecondViewController.swift */; };
@@ -24,6 +23,7 @@
 		3F0747382073E9A900E9B7B3 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0747372073E9A900E9B7B3 /* ThirdViewController.swift */; };
 		3F9275152078087F00AFF4FF /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9275142078087F00AFF4FF /* RoundButton.swift */; };
 		7AD9A31D389EAD8E9C302740 /* Pods_Blockchain_Medical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F70D1D584475D216201253A /* Pods_Blockchain_Medical.framework */; };
+		9B2D851E207E885500B17901 /* VitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D851D207E885500B17901 /* VitalViewController.swift */; };
 		9D7D6414F9FC0772FB683396 /* Pods_Blockchain_MedicalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086A0B15D0E9A80F9CFBEA19 /* Pods_Blockchain_MedicalUITests.framework */; };
 		AE2CD28F2079B0670000E007 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2CD28E2079B0670000E007 /* PageVC.swift */; };
 		AE2CD2952079C19E0000E007 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2CD2942079C19E0000E007 /* FourthViewController.swift */; };
@@ -54,7 +54,6 @@
 		300D2B10207D202800C9B8BB /* BinUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinUtils.swift; path = ../../../app/demo/BinUtils.swift; sourceTree = "<group>"; };
 		300D2B12207D203F00C9B8BB /* test.csr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test.csr; path = ../../../app/test.csr; sourceTree = "<group>"; };
 		300D2B14207D204400C9B8BB /* test.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test.key; path = ../../../app/demo/test.key; sourceTree = "<group>"; };
-		300D2B16207D251000C9B8BB /* VitalDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalDisplay.swift; sourceTree = "<group>"; };
 		3F0747042073E8E000E9B7B3 /* Blockchain-Medical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blockchain-Medical.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0747072073E8E000E9B7B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F0747092073E8E000E9B7B3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		502A0A8210D373A1F2982F26 /* Pods-Blockchain-MedicalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockchain-MedicalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blockchain-MedicalTests/Pods-Blockchain-MedicalTests.release.xcconfig"; sourceTree = "<group>"; };
 		5372DD08383171E4CFE0D65C /* Pods-Blockchain-MedicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockchain-MedicalUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blockchain-MedicalUITests/Pods-Blockchain-MedicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		73EBE25B87AB76A3365F2E61 /* Pods-Blockchain-Medical.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockchain-Medical.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blockchain-Medical/Pods-Blockchain-Medical.debug.xcconfig"; sourceTree = "<group>"; };
+		9B2D851D207E885500B17901 /* VitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalViewController.swift; sourceTree = "<group>"; };
 		A8C24CB12B4FE4EA4A2B5AF0 /* Pods-Blockchain-Medical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockchain-Medical.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blockchain-Medical/Pods-Blockchain-Medical.release.xcconfig"; sourceTree = "<group>"; };
 		A8F6A5AC4F2C821250BE4D7C /* Pods_Blockchain_MedicalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blockchain_MedicalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2CD28E2079B0670000E007 /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
@@ -147,6 +147,7 @@
 		3F0747062073E8E000E9B7B3 /* Blockchain-Medical */ = {
 			isa = PBXGroup;
 			children = (
+				9B2D851D207E885500B17901 /* VitalViewController.swift */,
 				300D2B12207D203F00C9B8BB /* test.csr */,
 				300D2B14207D204400C9B8BB /* test.key */,
 				300D2B0E207D200B00C9B8BB /* DSP.swift */,
@@ -162,7 +163,6 @@
 				3F0747152073E8E000E9B7B3 /* Info.plist */,
 				3F9275142078087F00AFF4FF /* RoundButton.swift */,
 				AE2CD2942079C19E0000E007 /* FourthViewController.swift */,
-				300D2B16207D251000C9B8BB /* VitalDisplay.swift */,
 			);
 			path = "Blockchain-Medical";
 			sourceTree = "<group>";
@@ -421,7 +421,7 @@
 				AE2CD2952079C19E0000E007 /* FourthViewController.swift in Sources */,
 				3F0747082073E8E000E9B7B3 /* AppDelegate.swift in Sources */,
 				3F0747382073E9A900E9B7B3 /* ThirdViewController.swift in Sources */,
-				300D2B17207D251000C9B8BB /* VitalDisplay.swift in Sources */,
+				9B2D851E207E885500B17901 /* VitalViewController.swift in Sources */,
 				300D2B11207D202800C9B8BB /* BinUtils.swift in Sources */,
 				3F07470A2073E8E000E9B7B3 /* FirstViewController.swift in Sources */,
 			);

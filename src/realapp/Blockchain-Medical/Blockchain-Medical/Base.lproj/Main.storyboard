@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -152,7 +153,79 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvu-D4-6sQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2218" y="-1504"/>
+            <point key="canvasLocation" x="3305" y="-745"/>
+        </scene>
+        <!--Vital View Controller-->
+        <scene sceneID="cw4-PA-3Cb">
+            <objects>
+                <viewController id="Iui-ft-tp7" customClass="VitalViewController" customModule="Blockchain_Medical" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8VA-US-W0w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZh-tS-pSi" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="59" width="343" height="280"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OSR-OM-K00">
+                                <rect key="frame" x="57" y="366" width="260" height="52"/>
+                                <color key="backgroundColor" red="0.25158191819999998" green="0.90390844619999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="lO4-Aq-F6S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1w-FM-k8R">
+                                <rect key="frame" x="137" y="477" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2ui-sY-iaY"/>
+                                    <constraint firstAttribute="width" constant="100" id="Osb-6d-zX5"/>
+                                </constraints>
+                                <state key="normal" title="Connect"/>
+                                <connections>
+                                    <action selector="connectButtonAction" destination="Iui-ft-tp7" eventType="touchUpInside" id="dyx-Uc-fLI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTK-HD-YSF">
+                                <rect key="frame" x="137" y="429" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="MYd-Ie-fpl"/>
+                                    <constraint firstAttribute="height" constant="40" id="uJe-gp-eqT"/>
+                                </constraints>
+                                <state key="normal" title="Read"/>
+                                <connections>
+                                    <action selector="readButtonAction" destination="Iui-ft-tp7" eventType="touchUpInside" id="btL-xp-VNW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.3294117647" green="0.77647058820000003" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="hTK-HD-YSF" firstAttribute="width" secondItem="V1w-FM-k8R" secondAttribute="width" id="0Tc-ya-xEo"/>
+                            <constraint firstItem="hTK-HD-YSF" firstAttribute="top" secondItem="V1w-FM-k8R" secondAttribute="bottom" constant="-88" id="806-yO-aPq"/>
+                            <constraint firstItem="V1w-FM-k8R" firstAttribute="top" secondItem="OSR-OM-K00" secondAttribute="bottom" constant="59" id="CWB-eU-w6c"/>
+                            <constraint firstItem="SZh-tS-pSi" firstAttribute="centerX" secondItem="8VA-US-W0w" secondAttribute="centerX" id="Dpj-av-vPc"/>
+                            <constraint firstItem="SZh-tS-pSi" firstAttribute="top" secondItem="16b-OJ-gJ8" secondAttribute="top" constant="39" id="K4z-64-hwg"/>
+                            <constraint firstItem="OSR-OM-K00" firstAttribute="leading" secondItem="16b-OJ-gJ8" secondAttribute="leading" constant="57" id="Mip-sn-ifd"/>
+                            <constraint firstAttribute="bottom" secondItem="hTK-HD-YSF" secondAttribute="bottom" constant="198" id="QJq-Ao-YbA"/>
+                            <constraint firstItem="V1w-FM-k8R" firstAttribute="centerX" secondItem="8VA-US-W0w" secondAttribute="centerX" id="TsP-3u-dA7"/>
+                            <constraint firstAttribute="bottom" secondItem="SZh-tS-pSi" secondAttribute="bottom" constant="328" id="UnB-2o-atU"/>
+                            <constraint firstItem="SZh-tS-pSi" firstAttribute="leading" secondItem="8VA-US-W0w" secondAttribute="leadingMargin" id="YvI-DV-i2I"/>
+                            <constraint firstItem="hTK-HD-YSF" firstAttribute="height" secondItem="V1w-FM-k8R" secondAttribute="height" id="aT0-bs-Hgd"/>
+                            <constraint firstItem="OSR-OM-K00" firstAttribute="centerX" secondItem="8VA-US-W0w" secondAttribute="centerX" id="al1-RH-qcO"/>
+                            <constraint firstItem="hTK-HD-YSF" firstAttribute="centerX" secondItem="8VA-US-W0w" secondAttribute="centerX" id="ybE-HK-0vT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="16b-OJ-gJ8"/>
+                    </view>
+                    <connections>
+                        <outlet property="chtChart" destination="SZh-tS-pSi" id="U7w-yX-eQc"/>
+                        <outlet property="textView" destination="OSR-OM-K00" id="Lwg-Jc-WA8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yDk-c9-BM3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1660" y="-1352.473763118441"/>
         </scene>
         <!--Vitals-->
         <scene sceneID="voc-rm-3Kc">
@@ -185,7 +258,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Usd-FG-SGE" kind="show" id="Vya-Ug-Nbu"/>
+                                    <segue destination="Iui-ft-tp7" kind="show" id="7b7-tE-Opb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jn6-fy-G16" customClass="RoundButton" customModule="Blockchain_Medical" customModuleProvider="target">
@@ -254,6 +327,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.32941176470588235" green="0.77647058823529413" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <viewLayoutGuide key="safeArea" id="nFL-VT-Hp9"/>
                     </view>
                     <navigationItem key="navigationItem" title="Vitals" id="XiR-ou-rKJ"/>
@@ -268,23 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9QK-kM-Tq3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512.8" y="-1504.4977511244379"/>
-        </scene>
-        <!--Vital Display-->
-        <scene sceneID="lFZ-pS-qvm">
-            <objects>
-                <viewController id="Usd-FG-SGE" customClass="VitalDisplay" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5b5-hU-Ngf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" red="0.56470588239999997" green="0.98823529409999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="2Je-tv-XCm"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1TZ-YX-Eod" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2191" y="-630"/>
+            <point key="canvasLocation" x="2422" y="-710"/>
         </scene>
         <!--Messages-->
         <scene sceneID="wg7-f3-ORb">
@@ -334,9 +392,9 @@
                         <color key="selectedImageTintColor" red="0.56470588239999997" green="0.98823529409999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Fe4-sT-Itv" kind="relationship" relationship="viewControllers" id="3H9-43-cah"/>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="Fe4-sT-Itv" kind="relationship" relationship="viewControllers" id="Te6-jW-FRU"/>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="WnA-iz-QcD"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="WMS-iO-6A5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -360,22 +418,23 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ERb-GP-Ixd" kind="relationship" relationship="rootViewController" id="N7U-qb-cUM"/>
+                        <segue destination="ERb-GP-Ixd" kind="relationship" relationship="rootViewController" id="yd6-wo-fm9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lzo-CO-x9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="-630"/>
+            <point key="canvasLocation" x="-55" y="-671"/>
         </scene>
         <!--Vitals-->
         <scene sceneID="5MR-Gj-yuv">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ERb-GP-Ixd" customClass="PageVC" customModule="Blockchain_Medical" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Fh1-jZ-XRg"/>
                     <navigationItem key="navigationItem" title="Vitals" id="CPb-jF-o5l"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gkI-fC-lRi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455" y="-627"/>
+            <point key="canvasLocation" x="726" y="-710"/>
         </scene>
     </scenes>
     <resources>

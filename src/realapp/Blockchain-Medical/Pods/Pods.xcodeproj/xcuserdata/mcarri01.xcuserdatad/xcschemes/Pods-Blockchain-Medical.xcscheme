@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "044760C6327621F4E7C13C9AEB884D81"
-               BuildableName = "SSLService.framework"
-               BlueprintName = "BlueSSLService"
+               BlueprintIdentifier = "C54A1D9802E1DF53D7E8E92EE6C18A25"
+               BuildableName = "Pods_Blockchain_Medical.framework"
+               BlueprintName = "Pods-Blockchain-Medical"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "044760C6327621F4E7C13C9AEB884D81"
-            BuildableName = "SSLService.framework"
-            BlueprintName = "BlueSSLService"
+            BlueprintIdentifier = "C54A1D9802E1DF53D7E8E92EE6C18A25"
+            BuildableName = "Pods_Blockchain_Medical.framework"
+            BlueprintName = "Pods-Blockchain-Medical"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
