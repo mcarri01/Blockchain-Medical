@@ -34,6 +34,13 @@ class VitalViewController: UIViewController {
         }
         socket.delegate = try! SSLService(usingConfiguration: myConfig)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParentViewController {
+            guard let socket = socket else { return }
+            socket.close()
+        }
+    }
     
     @IBAction func
         connectButtonAction() {
