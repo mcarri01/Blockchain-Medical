@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="47"/>
+            <point key="canvasLocation" x="-55" y="10"/>
         </scene>
         <!--Fourth View Controller-->
         <scene sceneID="VoL-CH-cgG">
@@ -74,6 +74,9 @@
                                         <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Iui-ft-tp7" kind="show" identifier="4" id="N3Z-o8-9Co"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Clh-B2-PfR" customClass="RoundButton" customModule="Blockchain_Medical" customModuleProvider="target">
                                 <rect key="frame" x="191" y="164" width="136" height="85"/>
@@ -93,6 +96,9 @@
                                         <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Iui-ft-tp7" kind="show" identifier="5" id="E9v-ag-BzI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ip9-be-GM5" customClass="RoundButton" customModule="Blockchain_Medical" customModuleProvider="target">
                                 <rect key="frame" x="36" y="372" width="104" height="94"/>
@@ -112,6 +118,9 @@
                                         <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Iui-ft-tp7" kind="show" identifier="6" id="ChS-9F-7dV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EKG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tow-Ze-fwN">
                                 <rect key="frame" x="36" y="466" width="33" height="21"/>
@@ -121,7 +130,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hq2-Xc-oWE" customClass="RoundButton" customModule="Blockchain_Medical" customModuleProvider="target">
-                                <rect key="frame" x="207" y="372" width="136" height="115"/>
+                                <rect key="frame" x="191" y="362" width="136" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                 <state key="normal" title="300">
@@ -138,6 +147,9 @@
                                         <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Iui-ft-tp7" kind="show" identifier="7" id="JW9-Eb-E20"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.3294117647" green="0.77647058820000003" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -153,12 +165,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvu-D4-6sQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3305" y="-745"/>
+            <point key="canvasLocation" x="1441" y="-473"/>
         </scene>
         <!--Vital View Controller-->
         <scene sceneID="cw4-PA-3Cb">
             <objects>
-                <viewController id="Iui-ft-tp7" customClass="VitalViewController" customModule="Blockchain_Medical" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VitalViewController" id="Iui-ft-tp7" customClass="VitalViewController" customModule="Blockchain_Medical" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8VA-US-W0w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDk-c9-BM3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="-1352.473763118441"/>
+            <point key="canvasLocation" x="2774" y="-784"/>
         </scene>
         <!--Vitals-->
         <scene sceneID="voc-rm-3Kc">
@@ -258,7 +270,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Iui-ft-tp7" kind="show" id="7b7-tE-Opb"/>
+                                    <segue destination="Iui-ft-tp7" kind="show" identifier="0" id="IhW-Le-aKo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jn6-fy-G16" customClass="RoundButton" customModule="Blockchain_Medical" customModuleProvider="target">
@@ -279,6 +291,9 @@
                                         <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Iui-ft-tp7" kind="show" identifier="3" id="KCW-KG-4us"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5z-h4-e4B" customClass="RoundButton" customModule="Blockchain_Medical" customModuleProvider="target">
                                 <rect key="frame" x="59" y="417" width="104" height="94"/>
@@ -298,6 +313,9 @@
                                         <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Iui-ft-tp7" kind="show" identifier="2" id="lmV-WB-rGa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdi-kH-S41" customClass="RoundButton" customModule="Blockchain_Medical" customModuleProvider="target">
                                 <rect key="frame" x="191" y="163" width="136" height="85"/>
@@ -317,6 +335,9 @@
                                         <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Iui-ft-tp7" kind="show" identifier="1" id="Yql-6g-0WF"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Heart Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TlD-mt-WSn">
                                 <rect key="frame" x="81" y="519" width="255" height="84"/>
@@ -342,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9QK-kM-Tq3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="-710"/>
+            <point key="canvasLocation" x="1441" y="-1195"/>
         </scene>
         <!--Messages-->
         <scene sceneID="wg7-f3-ORb">
@@ -379,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="815"/>
+            <point key="canvasLocation" x="-55" y="800"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -399,7 +420,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-54" y="46"/>
+            <point key="canvasLocation" x="-855" y="-70"/>
         </scene>
         <!--Vitals-->
         <scene sceneID="hI8-RU-pL5">
@@ -442,5 +463,8 @@
         <image name="heart2" width="36" height="36"/>
         <image name="schedule" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="JW9-Eb-E20"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.56470588239999997" green="0.98823529409999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -53,7 +53,12 @@ class ThirdViewController: UIViewController {
         Button4.center = CGPoint(x: self.view.center.x * 1.5, y: self.view.center.y * 4/3)
         // Do any additional setup after loading the view.
     }
-   
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? VitalViewController {
+            vc.id = segue.identifier!
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,9 +79,7 @@ class ThirdViewController: UIViewController {
             }
         }
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
+
 
     /*
     // MARK: - Navigation

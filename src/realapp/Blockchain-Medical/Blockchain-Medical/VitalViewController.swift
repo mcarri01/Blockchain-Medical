@@ -18,6 +18,7 @@ class VitalViewController: UIViewController {
     @IBOutlet weak var chtChart: LineChartView!
     var numbers : [Double] = [  ]
     
+    var id = ""
     let host = "10.0.0.216"
     let port = 9990
     let socket = try? Socket.create()
@@ -26,6 +27,7 @@ class VitalViewController: UIViewController {
     var streamFlag = false
     
     override func viewDidLoad() {
+        appendToTextField(string: id)
         super.viewDidLoad()
         guard let socket = socket else {
             return
