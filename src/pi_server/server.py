@@ -24,10 +24,8 @@ def main():
     data = generateRandomData()
     while True:
         # wait for connection
-        #try:
-            print "before"
+        try:
             connection, client_address = sock.accept()
-            print "after"
             connstream = ssl.wrap_socket(connection, 
                                             server_side=True,
                                             certfile = ssl_certfile,
@@ -46,10 +44,14 @@ def main():
                 connstream.sendall(packed_header + packed_data)
                 data = generateRandomData()
                 print data
-        #except KeyboardInterrupt:
-        #    connstream.close()
-        #finally:
-        #    connstream.close()
+        except socket.error, e:
+            connstream.close()
+        except IOError, e:
+            if e.errno == errno.EPIPE:
+                connstream.close()
+                continue
+        finally:
+            connstream.close()
 
 def generateRandomData():
     ret = []
