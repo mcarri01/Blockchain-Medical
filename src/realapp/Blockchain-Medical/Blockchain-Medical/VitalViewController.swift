@@ -19,16 +19,19 @@ class VitalViewController: UIViewController {
     var numbers : [Double] = [  ]
     
     var id = ""
-    let host = "10.0.0.216"
-    let port = 9990
+    let host = "10.3.13.119"
+    let port = 9999
     let socket = try? Socket.create()
     let myConfig = SSLService.Configuration()
     
     var streamFlag = false
     
+    let vitalDict: [String: String] = ["0": "Heart Rate", "1": "ECG", "2": "Temperature", "3": "Diastolic Blood", "4": "Plethysmograph", "5": "Respiration", "6": "Oxygen", "7": "Systolic Blood"]
+    
     override func viewDidLoad() {
-        appendToTextField(string: id)
+        //appendToTextField(string: id)
         super.viewDidLoad()
+        self.title = vitalDict[id]
         guard let socket = socket else {
             return
         }
@@ -78,8 +81,11 @@ class VitalViewController: UIViewController {
         while true {
             if streamFlag {
                 let header = readHeader()
+                print(header.count)
+                print(header.flag)
+                //appendToTextField(string: String(header.count))
                 readData(flag: header.flag, count: header.count)
-                
+            
                 DispatchQueue.main.async {
                     self.updateGraph()
                 }
@@ -113,7 +119,7 @@ class VitalViewController: UIViewController {
             return (-1, -1)
         }
         
-        if header_arr[0] as? String == "tomsucks" {
+        if header_arr[0] as? String == "forkpork" {
             let flag = header_arr[1] as! Int
             let count = header_arr[2] as! Int
             return (flag, count)
