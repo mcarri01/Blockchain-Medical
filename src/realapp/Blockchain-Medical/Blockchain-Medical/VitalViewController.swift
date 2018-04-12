@@ -19,7 +19,7 @@ class VitalViewController: UIViewController {
     var numbers : [Double] = [  ]
     
     var id = ""
-    let host = "10.3.13.119"
+    let host = "10.0.0.216"
     let port = 9999
     let socket = try? Socket.create()
     let myConfig = SSLService.Configuration()
@@ -42,6 +42,8 @@ class VitalViewController: UIViewController {
         if self.isMovingFromParentViewController {
             guard let socket = socket else { return }
             socket.close()
+            streamFlag = false
+            
         }
     }
     
@@ -52,9 +54,7 @@ class VitalViewController: UIViewController {
             do {
                 try client.connect(to: host, port: Int32(port), timeout: 10)
                 appendToTextField(string: "Connected to host \(host) on port \(port)")
-                DispatchQueue.global(qos: .background).async {
-                    self.streamData()
-                }
+                
             } catch {
                 appendToTextField(string: "Cannot connect to host")
             }
@@ -64,6 +64,10 @@ class VitalViewController: UIViewController {
     
     @IBAction func readButtonAction() {
         streamFlag = !streamFlag
+        DispatchQueue.global(qos: .background).async {
+            self.streamData()
+        }
+        
     }
     
     private func readResponse(count: Int) -> Data? {
@@ -78,17 +82,17 @@ class VitalViewController: UIViewController {
     }
     
     private func streamData() {
-        while true {
-            if streamFlag {
-                let header = readHeader()
-                print(header.count)
-                print(header.flag)
+        while streamFlag {
+            //if streamFlag {
+                let count = readHeader()
+                print(count)
+            
                 //appendToTextField(string: String(header.count))
-                readData(flag: header.flag, count: header.count)
+                readData(count: count)
             
                 DispatchQueue.main.async {
                     self.updateGraph()
-                }
+              //  }
             }
         }
     }
@@ -111,27 +115,24 @@ class VitalViewController: UIViewController {
         chtChart.chartDescription?.text = "My awesome chart" // Here we set the description for the graph
     }
     
-    func readHeader() -> (flag: Int, count: Int){
-        let response = readResponse(count: 16)
+    func readHeader() -> Int {
+        let response = readResponse(count: 13)
         let test = response!.reduce("", {$0 + String(format: "%02x", $1)})
-        let header_arr_try = try? unpack("!8sII", unhexlify(test)!)
+        let header_arr_try = try? unpack("!9sI", unhexlify(test)!)
         guard let header_arr = header_arr_try else {
-            return (-1, -1)
+            return -1
         }
         
-        if header_arr[0] as? String == "forkpork" {
-            let flag = header_arr[1] as! Int
-            let count = header_arr[2] as! Int
-            return (flag, count)
+        if header_arr[0] as? String == "forkpork1" {
+            let count = header_arr[1] as! Int
+            return count
         } else {
-            return (0,0)
+            return 0
         }
         
     }
     
-    func readData(flag: Int, count: Int) {
-        switch flag {
-        case 0:
+    func readData(count: Int) {
             let response = readResponse(count: count*4)
             let test = response!.reduce("", {$0 + String(format: "%02x", $1)})
             let data_arr_try = try? unpack("! " + String(count) + "I", unhexlify(test)!)
@@ -144,10 +145,7 @@ class VitalViewController: UIViewController {
             }
             
             numbers = new_numbers.map{Double($0)}
-            
-        default:
-            return
-        }
+        
     }
 
 }
