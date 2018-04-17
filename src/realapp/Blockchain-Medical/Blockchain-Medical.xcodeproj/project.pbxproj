@@ -14,7 +14,7 @@
 		300D2B15207D204400C9B8BB /* test.key in Resources */ = {isa = PBXBuildFile; fileRef = 300D2B14207D204400C9B8BB /* test.key */; };
 		3F0747082073E8E000E9B7B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0747072073E8E000E9B7B3 /* AppDelegate.swift */; };
 		3F07470A2073E8E000E9B7B3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0747092073E8E000E9B7B3 /* FirstViewController.swift */; };
-		3F07470C2073E8E000E9B7B3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07470B2073E8E000E9B7B3 /* SecondViewController.swift */; };
+		3F07470C2073E8E000E9B7B3 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07470B2073E8E000E9B7B3 /* MessagesViewController.swift */; };
 		3F07470F2073E8E000E9B7B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F07470D2073E8E000E9B7B3 /* Main.storyboard */; };
 		3F0747112073E8E000E9B7B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F0747102073E8E000E9B7B3 /* Assets.xcassets */; };
 		3F0747142073E8E000E9B7B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0747122073E8E000E9B7B3 /* LaunchScreen.storyboard */; };
@@ -24,6 +24,8 @@
 		3F9275152078087F00AFF4FF /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9275142078087F00AFF4FF /* RoundButton.swift */; };
 		7AD9A31D389EAD8E9C302740 /* Pods_Blockchain_Medical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F70D1D584475D216201253A /* Pods_Blockchain_Medical.framework */; };
 		9B2D851E207E885500B17901 /* VitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D851D207E885500B17901 /* VitalViewController.swift */; };
+		9B3B38B12085401400A01E22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B38B02085401400A01E22 /* GoogleService-Info.plist */; };
+		9BEB5DC5208596AD00F24E49 /* ClinicianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB5DC4208596AD00F24E49 /* ClinicianViewController.swift */; };
 		9D7D6414F9FC0772FB683396 /* Pods_Blockchain_MedicalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086A0B15D0E9A80F9CFBEA19 /* Pods_Blockchain_MedicalUITests.framework */; };
 		AE2CD28F2079B0670000E007 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2CD28E2079B0670000E007 /* PageVC.swift */; };
 		AE2CD2952079C19E0000E007 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2CD2942079C19E0000E007 /* FourthViewController.swift */; };
@@ -57,7 +59,7 @@
 		3F0747042073E8E000E9B7B3 /* Blockchain-Medical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blockchain-Medical.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F0747072073E8E000E9B7B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F0747092073E8E000E9B7B3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		3F07470B2073E8E000E9B7B3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		3F07470B2073E8E000E9B7B3 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		3F07470E2073E8E000E9B7B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F0747102073E8E000E9B7B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F0747132073E8E000E9B7B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,6 +77,8 @@
 		5372DD08383171E4CFE0D65C /* Pods-Blockchain-MedicalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockchain-MedicalUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blockchain-MedicalUITests/Pods-Blockchain-MedicalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		73EBE25B87AB76A3365F2E61 /* Pods-Blockchain-Medical.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockchain-Medical.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blockchain-Medical/Pods-Blockchain-Medical.debug.xcconfig"; sourceTree = "<group>"; };
 		9B2D851D207E885500B17901 /* VitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalViewController.swift; sourceTree = "<group>"; };
+		9B3B38B02085401400A01E22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9BEB5DC4208596AD00F24E49 /* ClinicianViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicianViewController.swift; sourceTree = "<group>"; };
 		A8C24CB12B4FE4EA4A2B5AF0 /* Pods-Blockchain-Medical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockchain-Medical.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blockchain-Medical/Pods-Blockchain-Medical.release.xcconfig"; sourceTree = "<group>"; };
 		A8F6A5AC4F2C821250BE4D7C /* Pods_Blockchain_MedicalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blockchain_MedicalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2CD28E2079B0670000E007 /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
@@ -154,13 +158,15 @@
 				300D2B10207D202800C9B8BB /* BinUtils.swift */,
 				3F0747072073E8E000E9B7B3 /* AppDelegate.swift */,
 				3F0747092073E8E000E9B7B3 /* FirstViewController.swift */,
-				3F07470B2073E8E000E9B7B3 /* SecondViewController.swift */,
+				3F07470B2073E8E000E9B7B3 /* MessagesViewController.swift */,
 				3F0747372073E9A900E9B7B3 /* ThirdViewController.swift */,
 				AE2CD28E2079B0670000E007 /* PageVC.swift */,
 				3F07470D2073E8E000E9B7B3 /* Main.storyboard */,
+				9BEB5DC4208596AD00F24E49 /* ClinicianViewController.swift */,
 				3F0747102073E8E000E9B7B3 /* Assets.xcassets */,
 				3F0747122073E8E000E9B7B3 /* LaunchScreen.storyboard */,
 				3F0747152073E8E000E9B7B3 /* Info.plist */,
+				9B3B38B02085401400A01E22 /* GoogleService-Info.plist */,
 				3F9275142078087F00AFF4FF /* RoundButton.swift */,
 				AE2CD2942079C19E0000E007 /* FourthViewController.swift */,
 			);
@@ -311,6 +317,7 @@
 				3F0747112073E8E000E9B7B3 /* Assets.xcassets in Resources */,
 				300D2B13207D203F00C9B8BB /* test.csr in Resources */,
 				3F07470F2073E8E000E9B7B3 /* Main.storyboard in Resources */,
+				9B3B38B12085401400A01E22 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,13 +383,37 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Blockchain-Medical/Pods-Blockchain-Medical-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BlueSSLService/SSLService.framework",
 				"${BUILT_PRODUCTS_DIR}/BlueSocket/Socket.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSLService.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Socket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -414,12 +445,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F07470C2073E8E000E9B7B3 /* SecondViewController.swift in Sources */,
+				3F07470C2073E8E000E9B7B3 /* MessagesViewController.swift in Sources */,
 				AE2CD28F2079B0670000E007 /* PageVC.swift in Sources */,
 				3F9275152078087F00AFF4FF /* RoundButton.swift in Sources */,
 				300D2B0F207D200B00C9B8BB /* DSP.swift in Sources */,
 				AE2CD2952079C19E0000E007 /* FourthViewController.swift in Sources */,
 				3F0747082073E8E000E9B7B3 /* AppDelegate.swift in Sources */,
+				9BEB5DC5208596AD00F24E49 /* ClinicianViewController.swift in Sources */,
 				3F0747382073E9A900E9B7B3 /* ThirdViewController.swift in Sources */,
 				9B2D851E207E885500B17901 /* VitalViewController.swift in Sources */,
 				300D2B11207D202800C9B8BB /* BinUtils.swift in Sources */,
