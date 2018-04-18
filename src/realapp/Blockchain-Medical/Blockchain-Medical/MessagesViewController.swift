@@ -36,20 +36,22 @@ class MessagesViewController: JSQMessagesViewController {
         
         let db = Firestore.firestore()
        
-        db.collection("messages").order(by: "date").limit(to: 10).whereField("senderId", isEqualTo: self.senderId)
+        db.collection("messages").order(by: "date", descending: true).limit(to: 10).whereField("senderId", isEqualTo: self.senderId)
             .addSnapshotListener {querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("Error fetching documents: \(String(describing: error))")
                     return
                 }
                 self.messages = []
+                //for i in 0 ... 10 {
                 for document in documents {
+                    
                     let data = document.data()
                     let id = data["senderId"]
                     let text = data["message"]
                     if let message = JSQMessage(senderId: id as! String, displayName: "Bob", text: text as! String)
                     {
-                        self.messages.append(message)
+                        self.messages.insert(message, at: 0)
                         self.finishReceivingMessage()
                     }
                     
@@ -67,8 +69,6 @@ class MessagesViewController: JSQMessagesViewController {
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
     {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyy-MM-dd HH:mm:ss"
         
         let db = Firestore.firestore()
         db.collection("messages").addDocument(data: [

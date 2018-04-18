@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3FE912C7EB36D881FC6FB6ECC9EE8BEF"
-               BuildableName = "Pods_Blockchain_Medical.framework"
-               BlueprintName = "Pods-Blockchain-Medical"
+               BlueprintIdentifier = "7499DB7876E168139FD2FF47F152E532"
+               BuildableName = "GRPCClient.framework"
+               BlueprintName = "gRPC"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3FE912C7EB36D881FC6FB6ECC9EE8BEF"
-            BuildableName = "Pods_Blockchain_Medical.framework"
-            BlueprintName = "Pods-Blockchain-Medical"
+            BlueprintIdentifier = "7499DB7876E168139FD2FF47F152E532"
+            BuildableName = "GRPCClient.framework"
+            BlueprintName = "gRPC"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
