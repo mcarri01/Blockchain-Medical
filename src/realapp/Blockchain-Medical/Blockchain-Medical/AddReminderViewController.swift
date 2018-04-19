@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firestore
 
 class AddReminderViewController: UIViewController {
 
@@ -23,6 +24,15 @@ class AddReminderViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? FirstViewController {
+            let db = Firestore.firestore()
+            db.collection("reminders").addDocument(data:
+            ["title": input.text]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added successfully")
+                }
+            }
             vc.reminders.append(input.text!)
         }
     }

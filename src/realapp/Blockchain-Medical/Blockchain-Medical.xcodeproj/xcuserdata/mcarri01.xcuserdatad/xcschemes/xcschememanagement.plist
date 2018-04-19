@@ -7,7 +7,25 @@
 		<key>Blockchain-Medical.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>19</integer>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>3F0747032073E8E000E9B7B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3F0747192073E8E000E9B7B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3F0747242073E8E000E9B7B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
