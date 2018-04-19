@@ -18,9 +18,19 @@ class VitalViewController: UIViewController {
     @IBOutlet weak var chtChart: LineChartView!
     var numbers : [Double] = [  ]
     
+    var HR : [Double] = [  ]
+    var ECG : [Double] = [  ]
+    var temp : [Double] = [  ]
+    var DB : [Double] = [  ]
+    var pleth : [Double] = [  ]
+    var resp : [Double] = [  ]
+    var oxy : [Double] = [  ]
+    var SB : [Double] = [  ]
+    
+    
     var id = ""
-    let host = "10.0.0.216"
-    let port = 9999
+    let host = "10.3.13.119"
+    let port = 9990
     let socket = try? Socket.create()
     let myConfig = SSLService.Configuration()
     
@@ -101,10 +111,37 @@ class VitalViewController: UIViewController {
         
         var lineChartEntry  = [ChartDataEntry]() //this is the Array that will eventually be displayed
         
-        for i in 0..<numbers.count {
-            let value = ChartDataEntry(x: Double(i), y: numbers[i]) // here we set the X and Y status in a data chart entry
-            lineChartEntry.append(value) // here we add it to the data set
+//        for i in 0..<numbers.count {
+//            let value = ChartDataEntry(x: Double(i), y: numbers[i]) // here we set the X and Y status in a data chart entry
+//            lineChartEntry.append(value) // here we add it to the data set
+//        }
+        
+        var graphData : [Double] = [  ]
+        switch vitalDict[id] {
+        case "Heart Rate":
+            graphData = HR
+        case "ECG":
+            graphData  = ECG
+        case "Temperature":
+            graphData = temp
+        case "Diastolic Blood":
+            graphData = DB
+        case "Plethysmograph":
+            graphData = pleth
+        case "Respiration":
+            graphData = resp
+        case "Oxygen":
+            graphData = oxy
+        case "Systolic":
+            graphData = SB
+        default:
+            graphData = HR
         }
+        
+          for i in 0..<graphData.count {
+              let value = ChartDataEntry(x: Double(i), y: graphData[i]) // here we set the X and Y status in a data chart entry
+              lineChartEntry.append(value) // here we add it to the data set
+          }
         let line1 = LineChartDataSet(values: lineChartEntry, label: "Number") //Here we convert lineChartEntry to a LineChartDataSet
         line1.colors = [NSUIColor.blue] //Sets the colour to blue
         
@@ -112,18 +149,18 @@ class VitalViewController: UIViewController {
         data.addDataSet(line1) //Adds the line to the dataSet
         
         chtChart.data = data //finally - it adds the chart data to the chart and causes an update
-        chtChart.chartDescription?.text = "My awesome chart" // Here we set the description for the graph
+        //chtChart.chartDescription?.text = "My awesome chart" // Here we set the description for the graph
     }
     
     func readHeader() -> Int {
-        let response = readResponse(count: 13)
+        let response = readResponse(count: 12)
         let test = response!.reduce("", {$0 + String(format: "%02x", $1)})
-        let header_arr_try = try? unpack("!9sI", unhexlify(test)!)
+        let header_arr_try = try? unpack("!8sI", unhexlify(test)!)
         guard let header_arr = header_arr_try else {
             return -1
         }
         
-        if header_arr[0] as? String == "forkpork1" {
+        if header_arr[0] as? String == "forkpork" {
             let count = header_arr[1] as! Int
             return count
         } else {
@@ -143,8 +180,17 @@ class VitalViewController: UIViewController {
             for num in data_arr {
                 new_numbers.append(num as! Int)
             }
-            
-            numbers = new_numbers.map{Double($0)}
+            HR.append(Double(new_numbers[0]))
+            ECG.append(Double(new_numbers[1]))
+            temp.append(Double(new_numbers[2]))
+            DB.append(Double(new_numbers[3]))
+            pleth.append(Double(new_numbers[4]))
+            resp.append(Double(new_numbers[5]))
+            oxy.append(Double(new_numbers[6]))
+            SB.append(Double(new_numbers[7]))
+        
+        
+            //numbers = new_numbers.map{Double($0)}
         
     }
 
