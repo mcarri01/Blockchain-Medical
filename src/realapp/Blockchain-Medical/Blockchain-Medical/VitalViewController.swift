@@ -118,21 +118,21 @@ class VitalViewController: UIViewController {
         
         var graphData : [Double] = [  ]
         switch vitalDict[id] {
-        case "Heart Rate":
+        case "Heart Rate"?:
             graphData = HR
-        case "ECG":
+        case "ECG"?:
             graphData  = ECG
-        case "Temperature":
+        case "Temperature"?:
             graphData = temp
-        case "Diastolic Blood":
+        case "Diastolic Blood"?:
             graphData = DB
-        case "Plethysmograph":
+        case "Plethysmograph"?:
             graphData = pleth
-        case "Respiration":
+        case "Respiration"?:
             graphData = resp
-        case "Oxygen":
+        case "Oxygen"?:
             graphData = oxy
-        case "Systolic":
+        case "Systolic"?:
             graphData = SB
         default:
             graphData = HR
