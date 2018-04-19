@@ -9,7 +9,21 @@
 import UIKit
 import CVCalendar
 
-class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendarMenuViewDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+    var reminders: [String] = ["Take meds", "Drink"]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reminders.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reminderCell", for: indexPath)
+        cell.textLabel?.text = reminders[indexPath.row]
+        return cell
+    }
+    
     
     func presentationMode() -> CalendarMode {
         return .monthView
@@ -21,7 +35,7 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
     
     private var currentCalendar: Calendar?
     @IBOutlet weak var dateLabel: UILabel!
-    
+    @IBOutlet weak var remindersTable: UITableView!
     @IBOutlet weak var menuView: CVCalendarMenuView!
     
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -100,6 +114,7 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
             self.view.insertSubview(updatedMonthLabel, aboveSubview: self.dateLabel)
         }
     }
+
     
 }
 
