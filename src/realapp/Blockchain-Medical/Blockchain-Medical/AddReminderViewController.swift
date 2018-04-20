@@ -18,24 +18,36 @@ class AddReminderViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func saveReminder(_ sender: UIBarButtonItem) {
+        let db = Firestore.firestore()
+        db.collection("reminders").addDocument(data:
+        ["title": input.text]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added successfully")
+            }
+        }
+        _ = navigationController?.popViewController(animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? FirstViewController {
-            let db = Firestore.firestore()
-            db.collection("reminders").addDocument(data:
-            ["title": input.text]) { err in
-                if let err = err {
-                    print("Error adding document: \(err)")
-                } else {
-                    print("Document added successfully")
-                }
-            }
-            vc.reminders.append(input.text!)
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let vc = segue.destination as? FirstViewController {
+//            let db = Firestore.firestore()
+//            db.collection("reminders").addDocument(data:
+//            ["title": input.text]) { err in
+//                if let err = err {
+//                    print("Error adding document: \(err)")
+//                } else {
+//                    print("Document added successfully")
+//                }
+//            }
+//            vc.reminders.append(input.text!)
+//        }
+//    }
 
     /*
     // MARK: - Navigation

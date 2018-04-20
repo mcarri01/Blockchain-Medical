@@ -20,14 +20,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01V-a5-hFX" customClass="CVCalendarMenuView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="81" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="19"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="9pv-A4-QxB" id="Xg4-2R-ytp"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTq-Qh-4TQ" customClass="CVCalendarView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="152" width="375" height="182"/>
+                                <rect key="frame" x="0.0" y="152" width="375" height="133"/>
                                 <color key="backgroundColor" red="0.34509803919999998" green="0.71372549019999998" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="calendarAppearanceDelegate" destination="9pv-A4-QxB" id="aD7-7G-d4p"/>
@@ -35,15 +35,18 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJY-bx-oI0">
-                                <rect key="frame" x="141" y="342" width="30" height="30"/>
+                                <rect key="frame" x="141" y="293" width="30" height="30"/>
                                 <state key="normal" title="&lt;"/>
                                 <connections>
                                     <action selector="previousMonth" destination="9pv-A4-QxB" eventType="touchUpInside" id="pUG-Ra-N9d"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4LW-dK-wpG">
-                                <rect key="frame" x="16" y="380" width="343" height="222"/>
+                                <rect key="frame" x="16" y="331" width="343" height="222"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="222" id="KmX-tT-YQc"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reminderCell" id="do4-Fm-bkv">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
@@ -60,14 +63,14 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gag-3t-ZLi">
-                                <rect key="frame" x="204" y="342" width="30" height="30"/>
+                                <rect key="frame" x="204" y="293" width="30" height="30"/>
                                 <state key="normal" title="&gt;"/>
                                 <connections>
                                     <action selector="nextMonth" destination="9pv-A4-QxB" eventType="touchUpInside" id="fou-Dc-ueX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="January, 2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iu2-iK-tLp">
-                                <rect key="frame" x="134" y="52" width="107" height="21"/>
+                                <rect key="frame" x="134" y="96" width="107" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -75,24 +78,23 @@
                         </subviews>
                         <color key="backgroundColor" red="0.32941176470588235" green="0.77647058823529413" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qJY-bx-oI0" firstAttribute="top" secondItem="sTq-Qh-4TQ" secondAttribute="bottom" constant="8" id="2L8-Vd-Ap5"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="sTq-Qh-4TQ" secondAttribute="bottom" constant="289" id="Dbl-F2-JbS"/>
-                            <constraint firstItem="4LW-dK-wpG" firstAttribute="centerX" secondItem="sTq-Qh-4TQ" secondAttribute="centerX" id="N1G-4q-Wfh"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="4LW-dK-wpG" secondAttribute="bottom" constant="21" id="Nmi-jT-8hr"/>
-                            <constraint firstItem="sTq-Qh-4TQ" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="152" id="R9Z-IA-YLk"/>
-                            <constraint firstItem="sTq-Qh-4TQ" firstAttribute="trailing" secondItem="01V-a5-hFX" secondAttribute="trailing" id="XYh-wf-YLw"/>
-                            <constraint firstItem="Gag-3t-ZLi" firstAttribute="leading" secondItem="qJY-bx-oI0" secondAttribute="trailing" constant="33" id="ekI-E0-d52"/>
-                            <constraint firstItem="01V-a5-hFX" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="61" id="gFS-QN-3ha"/>
-                            <constraint firstItem="Iu2-iK-tLp" firstAttribute="centerX" secondItem="01V-a5-hFX" secondAttribute="centerX" id="gIm-w5-bHN"/>
-                            <constraint firstItem="qJY-bx-oI0" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="141" id="kxZ-cz-NoS"/>
-                            <constraint firstAttribute="trailing" secondItem="01V-a5-hFX" secondAttribute="trailing" id="mHs-UC-2x5"/>
-                            <constraint firstItem="4LW-dK-wpG" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="oWH-kp-gaJ"/>
-                            <constraint firstItem="sTq-Qh-4TQ" firstAttribute="top" secondItem="01V-a5-hFX" secondAttribute="bottom" constant="8" id="pYh-8W-8p0"/>
-                            <constraint firstItem="01V-a5-hFX" firstAttribute="top" secondItem="Iu2-iK-tLp" secondAttribute="bottom" constant="8" id="qmu-El-8dL"/>
-                            <constraint firstItem="01V-a5-hFX" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="rjs-0n-OUX"/>
-                            <constraint firstItem="4LW-dK-wpG" firstAttribute="top" secondItem="qJY-bx-oI0" secondAttribute="bottom" constant="8" id="rss-59-BTe"/>
-                            <constraint firstItem="qJY-bx-oI0" firstAttribute="baseline" secondItem="Gag-3t-ZLi" secondAttribute="baseline" id="xMO-6e-Q5f"/>
-                            <constraint firstItem="sTq-Qh-4TQ" firstAttribute="leading" secondItem="01V-a5-hFX" secondAttribute="leading" id="yoq-Nc-vPD"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="4LW-dK-wpG" secondAttribute="bottom" constant="21" id="0CP-a0-to7"/>
+                            <constraint firstItem="qJY-bx-oI0" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="141" id="3Sb-oC-svW"/>
+                            <constraint firstItem="01V-a5-hFX" firstAttribute="leading" secondItem="sTq-Qh-4TQ" secondAttribute="leading" id="47L-Af-03Q"/>
+                            <constraint firstItem="qJY-bx-oI0" firstAttribute="top" secondItem="sTq-Qh-4TQ" secondAttribute="bottom" constant="8" symbolic="YES" id="6jp-17-a4E"/>
+                            <constraint firstItem="01V-a5-hFX" firstAttribute="trailing" secondItem="sTq-Qh-4TQ" secondAttribute="trailing" id="Cao-74-98h"/>
+                            <constraint firstItem="Iu2-iK-tLp" firstAttribute="centerX" secondItem="01V-a5-hFX" secondAttribute="centerX" id="Ff9-Xl-deG"/>
+                            <constraint firstItem="01V-a5-hFX" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="IZh-oC-7Pp"/>
+                            <constraint firstItem="sTq-Qh-4TQ" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="152" id="Phk-gg-UMF"/>
+                            <constraint firstItem="Iu2-iK-tLp" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="32" id="RBe-ID-mGW"/>
+                            <constraint firstItem="sTq-Qh-4TQ" firstAttribute="centerX" secondItem="4LW-dK-wpG" secondAttribute="centerX" id="Rks-uV-bIj"/>
+                            <constraint firstAttribute="trailing" secondItem="01V-a5-hFX" secondAttribute="trailing" id="UD1-xq-dgv"/>
+                            <constraint firstItem="4LW-dK-wpG" firstAttribute="top" secondItem="qJY-bx-oI0" secondAttribute="bottom" constant="8" symbolic="YES" id="bZ4-5d-P0p"/>
+                            <constraint firstItem="sTq-Qh-4TQ" firstAttribute="top" secondItem="01V-a5-hFX" secondAttribute="bottom" constant="8" symbolic="YES" id="eXl-Sn-Srf"/>
+                            <constraint firstItem="Gag-3t-ZLi" firstAttribute="leading" secondItem="qJY-bx-oI0" secondAttribute="trailing" constant="33" id="hrB-KD-SWP"/>
+                            <constraint firstItem="4LW-dK-wpG" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="o1c-MP-tfy"/>
+                            <constraint firstItem="01V-a5-hFX" firstAttribute="top" secondItem="Iu2-iK-tLp" secondAttribute="bottom" constant="8" symbolic="YES" id="tnx-r7-Yjy"/>
+                            <constraint firstItem="qJY-bx-oI0" firstAttribute="baseline" secondItem="Gag-3t-ZLi" secondAttribute="baseline" id="yoe-6C-A1L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -147,7 +149,7 @@
                     <navigationItem key="navigationItem" title="Add Reminder" id="80A-Vz-DIS">
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="c2W-qh-wsO">
                             <connections>
-                                <segue destination="9pv-A4-QxB" kind="show" id="4rg-wP-FnF"/>
+                                <action selector="saveReminder:" destination="5lQ-Ag-VC4" id="oMN-z8-nWj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -631,9 +633,7 @@
         <image name="schedule" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qNG-WZ-XOH"/>
         <segue reference="N3Z-o8-9Co"/>
-        <segue reference="4rg-wP-FnF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.56470588239999997" green="0.98823529409999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

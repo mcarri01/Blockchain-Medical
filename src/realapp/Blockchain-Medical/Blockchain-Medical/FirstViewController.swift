@@ -8,10 +8,11 @@
 
 import UIKit
 import CVCalendar
+import Firestore
 
 class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendarMenuViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    var reminders: [String] = ["Take meds", "Drink"]
+    var reminders: [String] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reminders.count
@@ -55,6 +56,21 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
         if let currentCalendar = currentCalendar {
             dateLabel.text = CVDate(date: Date(), calendar: currentCalendar).globalDescription
         }
+        let db = Firestore.firestore()
+        _ = db.collection("reminders").addSnapshotListener { querySnapshot, err in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                self.reminders = []
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    self.reminders.append(data["title"] as! String)
+                }
+                print(self.reminders)
+            }
+            self.remindersTable.reloadData()
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
