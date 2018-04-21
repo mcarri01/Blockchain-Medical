@@ -12,6 +12,7 @@ import Firestore
 class AddReminderViewController: UIViewController {
 
     @IBOutlet weak var input: UITextField!
+    @IBOutlet weak var notes: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +22,9 @@ class AddReminderViewController: UIViewController {
     @IBAction func saveReminder(_ sender: UIBarButtonItem) {
         let db = Firestore.firestore()
         db.collection("reminders").addDocument(data:
-        ["title": input.text]) { err in
+        ["title": input.text,
+         "notes": notes.text,
+         "date": NSDate()]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
