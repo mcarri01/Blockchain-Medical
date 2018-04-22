@@ -12,16 +12,18 @@ import Firestore
 
 class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendarMenuViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    var reminders: [String] = []
+    var reminders: [(title : String, notes: String, date : Date)] = []
+    var dailyReminders: [(title : String, notes: String, date : Date)] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reminders.count
+        return dailyReminders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reminderCell", for: indexPath)
-        cell.textLabel?.text = reminders[indexPath.row]
+        cell.textLabel?.text = dailyReminders[indexPath.row].title
+        cell.detailTextLabel?.text = dailyReminders[indexPath.row].notes
         return cell
     }
     
@@ -42,9 +44,9 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
     @IBOutlet weak var calendarView: CVCalendarView!
     
     override func awakeFromNib() {
-        let timeZoneBias = 480 // (UTC+08:00)
+        let timeZoneBias = 0//-300 // (UTC-05:00)
         currentCalendar = Calendar(identifier: .gregorian)
-        currentCalendar?.locale = Locale(identifier: "us_US")
+        currentCalendar?.locale = Locale(identifier: "en_US")
         if let timeZone = TimeZone(secondsFromGMT: -timeZoneBias * 60) {
             currentCalendar?.timeZone = timeZone
         }
@@ -64,7 +66,7 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
                 self.reminders = []
                 for document in querySnapshot!.documents {
                     let data = document.data()
-                    self.reminders.append(data["title"] as! String)
+                    self.reminders.append((data["title"] as! String, data["notes"] as! String, data["date"] as! Date))
                 }
                 print(self.reminders)
             }
@@ -130,7 +132,16 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
             self.view.insertSubview(updatedMonthLabel, aboveSubview: self.dateLabel)
         }
     }
-
-    
+    func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool) {
+        dailyReminders = []
+        for reminder in reminders {
+            if (currentCalendar?.isDate(reminder.date, equalTo: dayView.date.convertedDate()! - 4 * 3600, toGranularity: .day))! {
+                dailyReminders.append(reminder)
+            }
+        }
+        remindersTable?.reloadData()
+    }
 }
+    
+
 
