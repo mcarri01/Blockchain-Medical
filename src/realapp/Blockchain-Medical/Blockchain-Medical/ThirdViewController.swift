@@ -4,7 +4,7 @@
 //
 //  Created by Ben Francis on 4/3/18.
 //  Copyright © 2018 Ben Francis. All rights reserved.
-//
+//"0": "Heart Rate", "1": "ECG", "2": "Temperature", "3": "Diastolic Blood", "4": "Plethysmograph", "5": "Respiration", "6": "Oxygen", "7": "Systolic Blood"
 
 import UIKit
 
@@ -15,7 +15,10 @@ class ThirdViewController: UIViewController {
     @IBOutlet weak var Button3: RoundButton!
     @IBOutlet weak var Button4: RoundButton!
     
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var label4: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,9 @@ class ThirdViewController: UIViewController {
         test.borderWidth = 7
         test.cornerRadius = test.frame.size.width / 2.0
         test.center = CGPoint(x: self.view.center.x / 2.0, y: self.view.center.y * 2/3)
+        label1.text = "hr"
+        label1.center = CGPoint(x: self.view.center.x/2.0, y: self.view.center.y * 2/3 + test.frame.height/4.0)
+        label1.font = label1.font.withSize(test.frame.size.width/160 * 20.0)
         
         Button2.setTitle("194", for: [])
         Button2.frame.size = getSizeForButton()
@@ -33,6 +39,9 @@ class ThirdViewController: UIViewController {
         Button2.borderWidth = 7
         Button2.cornerRadius = Button2.frame.size.width / 2.0
         Button2.center = CGPoint(x: self.view.center.x * 1.5, y: self.view.center.y *  2/3)
+        label2.text = "ecg"
+        label2.center = CGPoint(x: self.view.center.x * 1.5, y: self.view.center.y * 2/3 + test.frame.height/4.0)
+        label2.font = label2.font.withSize(test.frame.size.width/160 * 20.0)
         
         Button3.setTitle("60", for: [])
         
@@ -41,9 +50,9 @@ class ThirdViewController: UIViewController {
         Button3.borderWidth = 7
         Button3.cornerRadius = Button3.frame.size.width / 2.0
         Button3.center = CGPoint(x: self.view.center.x / 2.0, y: self.view.center.y * 4/3)
-        label3.text = "Heart Rate"
+        label3.text = "deg"
         label3.center = CGPoint(x: self.view.center.x/2.0, y: self.view.center.y * 4/3 + test.frame.height/4.0)
-        label3.font = label3.font.withSize(test.frame.size.width/160 * 17.0)
+        label3.font = label3.font.withSize(test.frame.size.width/160 * 20.0)
         
         Button4.setTitle("300", for: [])
         Button4.frame.size = getSizeForButton()
@@ -51,6 +60,9 @@ class ThirdViewController: UIViewController {
         Button4.borderWidth = 7
         Button4.cornerRadius = Button4.frame.size.width / 2.0
         Button4.center = CGPoint(x: self.view.center.x * 1.5, y: self.view.center.y * 4/3)
+        label4.text = "dias"
+        label4.center = CGPoint(x: self.view.center.x * 1.5, y: self.view.center.y * 4/3 + test.frame.height/4.0)
+        label4.font = label4.font.withSize(test.frame.size.width/160 * 20.0)
         // Do any additional setup after loading the view.
     }
  
