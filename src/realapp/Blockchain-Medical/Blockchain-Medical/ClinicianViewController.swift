@@ -8,8 +8,34 @@
 
 import UIKit
 
-class ClinicianViewController: UITableViewController {
+class ClinicianViewController: UITableViewController{
+   
+    /*let clinicians = ["Dr.Tom", "Dr.Ben", "Dr.Emma","Dr.Matt", "Dr.Diana"]
+    
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return(clinicians.count)
+    }
 
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "clinicianCell")
+        cell.textLabel?.text = clinicians[indexPath.row]
+        return(cell)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }*/
+    
+    
+    
+    
+    
+    
+    
     var clinicians = [String]()
     
     override func viewDidLoad() {

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3B08C49A396BAA0D9DCAD4460CC52F95"
-               BuildableName = "leveldb.framework"
-               BlueprintName = "leveldb-library"
+               BlueprintIdentifier = "7499DB7876E168139FD2FF47F152E532"
+               BuildableName = "GRPCClient.framework"
+               BlueprintName = "gRPC"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3B08C49A396BAA0D9DCAD4460CC52F95"
-            BuildableName = "leveldb.framework"
-            BlueprintName = "leveldb-library"
+            BlueprintIdentifier = "7499DB7876E168139FD2FF47F152E532"
+            BuildableName = "GRPCClient.framework"
+            BlueprintName = "gRPC"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

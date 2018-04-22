@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E08E58C974557E442C63A41CE47B9454"
-               BuildableName = "grpc.framework"
-               BlueprintName = "gRPC-Core"
+               BlueprintIdentifier = "044760C6327621F4E7C13C9AEB884D81"
+               BuildableName = "SSLService.framework"
+               BlueprintName = "BlueSSLService"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E08E58C974557E442C63A41CE47B9454"
-            BuildableName = "grpc.framework"
-            BlueprintName = "gRPC-Core"
+            BlueprintIdentifier = "044760C6327621F4E7C13C9AEB884D81"
+            BuildableName = "SSLService.framework"
+            BlueprintName = "BlueSSLService"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

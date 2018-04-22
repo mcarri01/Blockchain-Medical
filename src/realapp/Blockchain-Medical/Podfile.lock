@@ -1,7 +1,7 @@
 PODS:
-  - BlueSocket (1.0.2)
-  - BlueSSLService (1.0.2):
-    - BlueSocket (~> 1.0.2)
+  - BlueSocket (1.0.4)
+  - BlueSSLService (1.0.4):
+    - BlueSocket (~> 1.0.4)
   - BoringSSL (10.0.2):
     - BoringSSL/Implementation (= 10.0.2)
     - BoringSSL/Interface (= 10.0.2)
@@ -118,8 +118,8 @@ EXTERNAL SOURCES:
     :podspec: https://storage.googleapis.com/firebase-preview-drop/ios/firestore/0.7.0/Firestore.podspec.json
 
 SPEC CHECKSUMS:
-  BlueSocket: 21ed13d0cce712a876a169a4d091ac00db2c3e70
-  BlueSSLService: 3c818b79fd3813b480bcbedb8f560516d28ed472
+  BlueSocket: 1b6e5bd4cb28bc39504d9fe8e35e16ab1c41ba2c
+  BlueSSLService: 6c08a5e5c6cd566b5a3b2f399165e0438287802f
   BoringSSL: 60dd24df4af296bf41d78e5841dbb95d75f88c0d
   Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
   CVCalendar: 505c11b11a088b43f159806e791eba1c2540853b
