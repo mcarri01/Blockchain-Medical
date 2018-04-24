@@ -26,6 +26,7 @@
 		54BC410C429A7B20585C5872 /* Pods_Blockchain_MedicalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0264271E52330597F5EAD305 /* Pods_Blockchain_MedicalTests.framework */; };
 		856C22213FDBC0C8EE47EB1E /* Pods_Blockchain_MedicalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0E99FB8C55ED38F584441F /* Pods_Blockchain_MedicalUITests.framework */; };
 		9B2D851E207E885500B17901 /* VitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D851D207E885500B17901 /* VitalViewController.swift */; };
+		9B3AC9CE208EACC0007C6725 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AC9CD208EACC0007C6725 /* LoginViewController.swift */; };
 		9B3B38B12085401400A01E22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B38B02085401400A01E22 /* GoogleService-Info.plist */; };
 		9BEB5DC5208596AD00F24E49 /* ClinicianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB5DC4208596AD00F24E49 /* ClinicianViewController.swift */; };
 		AE2CD28F2079B0670000E007 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2CD28E2079B0670000E007 /* PageVC.swift */; };
@@ -79,6 +80,7 @@
 		8EC1D0F34060D75258B3D1E9 /* Pods-Blockchain-MedicalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockchain-MedicalTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blockchain-MedicalTests/Pods-Blockchain-MedicalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AECE1BA52CA6308DCB78780 /* Pods-Blockchain-MedicalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockchain-MedicalTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blockchain-MedicalTests/Pods-Blockchain-MedicalTests.release.xcconfig"; sourceTree = "<group>"; };
 		9B2D851D207E885500B17901 /* VitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalViewController.swift; sourceTree = "<group>"; };
+		9B3AC9CD208EACC0007C6725 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9B3B38B02085401400A01E22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9BEB5DC4208596AD00F24E49 /* ClinicianViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicianViewController.swift; sourceTree = "<group>"; };
 		AE2CD28E2079B0670000E007 /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				3FF994502088F6F9009266A4 /* DSP.swift */,
 				9B2D851D207E885500B17901 /* VitalViewController.swift */,
+				9B3AC9CD208EACC0007C6725 /* LoginViewController.swift */,
 				300D2B12207D203F00C9B8BB /* test.csr */,
 				300D2B14207D204400C9B8BB /* test.key */,
 				300D2B10207D202800C9B8BB /* BinUtils.swift */,
@@ -461,6 +464,7 @@
 				3F0747382073E9A900E9B7B3 /* ThirdViewController.swift in Sources */,
 				9B2D851E207E885500B17901 /* VitalViewController.swift in Sources */,
 				300D2B11207D202800C9B8BB /* BinUtils.swift in Sources */,
+				9B3AC9CE208EACC0007C6725 /* LoginViewController.swift in Sources */,
 				3F07470A2073E8E000E9B7B3 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
