@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -26,9 +27,28 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction() {
-       let appDelegateTemp = UIApplication.shared.delegate as? AppDelegate
-        appDelegateTemp?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+        if let email = usernameView.text, let pass = passwordView.text {
+            Auth.auth().signIn(withEmail: email, password: pass, completion: {(user, error) in
+                if let u = user {
+                   self.performSegue(withIdentifier: "goToHome", sender: nil)
+                }
+                else {
+                    print("No user")
+                    return
+                }
+                })
+                
+        }
+//       let appDelegateTemp = UIApplication.shared.delegate as? AppDelegate
+//        appDelegateTemp?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let vc = segue.destination as? VitalViewController {
+//            vc.user = usernameView.text!
+//        }
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
