@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ClinicianViewController: UITableViewController{
    
@@ -35,7 +36,7 @@ class ClinicianViewController: UITableViewController{
     
     
     
-    
+    let user = Auth.auth().currentUser!.uid
     var clinicians = [String]()
     
     override func viewDidLoad() {

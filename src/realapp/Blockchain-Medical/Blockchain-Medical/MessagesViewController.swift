@@ -9,9 +9,11 @@
 import UIKit
 import JSQMessagesViewController
 import Firestore
+import FirebaseAuth
 
 class MessagesViewController: JSQMessagesViewController {
 
+    let user = Auth.auth().currentUser!.uid
     // array to store messages
     var messages = [JSQMessage]()
     
@@ -27,7 +29,7 @@ class MessagesViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        senderId = "1234"
+        senderId = user
         senderDisplayName = "1234"
         
         inputToolbar.contentView.leftBarButtonItem = nil

@@ -9,9 +9,11 @@
 import UIKit
 import CVCalendar
 import Firestore
+import FirebaseAuth
 
 class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendarMenuViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    let user = Auth.auth().currentUser!.uid
     var reminders: [(title : String, notes: String, date : Date)] = []
     var dailyReminders: [(title : String, notes: String, date : Date)] = []
     
@@ -20,13 +22,13 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
         let cell = tableView.dequeueReusableCell(withIdentifier: "reminderCell", for: indexPath)
         cell.textLabel?.text = dailyReminders[indexPath.row].title
-        cell.detailTextLabel?.text = dailyReminders[indexPath.row].notes
+        cell.detailTextLabel?.text = dateFormatter.string(from: dailyReminders[indexPath.row].date) + "\t" + dailyReminders[indexPath.row].notes
         return cell
     }
-    
     
     func presentationMode() -> CalendarMode {
         return .monthView
@@ -59,7 +61,7 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
             dateLabel.text = CVDate(date: Date(), calendar: currentCalendar).globalDescription
         }
         let db = Firestore.firestore()
-        _ = db.collection("reminders").addSnapshotListener { querySnapshot, err in
+        _ = db.collection("reminders").whereField("userID", isEqualTo: user).addSnapshotListener { querySnapshot, err in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
