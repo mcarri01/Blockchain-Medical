@@ -14,7 +14,10 @@ class FourthViewController: UIViewController{
     @IBOutlet weak var Button7: RoundButton!
     @IBOutlet weak var Button8: RoundButton!
     
+    @IBOutlet weak var label5: UILabel!
+    @IBOutlet weak var label6: UILabel!
     @IBOutlet weak var label7: UILabel!
+    @IBOutlet weak var label8: UILabel!
     //@IBOutlet weak var label7: UILabel!
     
     override func viewDidLoad() {
@@ -27,6 +30,9 @@ class FourthViewController: UIViewController{
         Button5.borderWidth = 7
         Button5.cornerRadius = Button5.frame.size.width / 2.0
         Button5.center = CGPoint(x: self.view.center.x / 2.0, y: self.view.center.y * 2/3)
+        label5.text = "pleth"
+        label5.center = CGPoint(x: self.view.center.x/2.0, y: self.view.center.y * 2/3 + Button5.frame.height/4.0)
+        label5.font = label5.font.withSize(Button5.frame.size.width/160 * 20.0)
         
         Button6.setTitle("532", for: [])
         Button6.frame.size = getSizeForButton()
@@ -34,6 +40,9 @@ class FourthViewController: UIViewController{
         Button6.borderWidth = 7
         Button6.cornerRadius = Button6.frame.size.width / 2.0
         Button6.center = CGPoint(x: self.view.center.x * 1.5, y: self.view.center.y *  2/3)
+        label6.text = "resp"
+        label6.center = CGPoint(x: self.view.center.x * 1.5, y: self.view.center.y * 2/3 + Button5.frame.height/4.0)
+        label6.font = label6.font.withSize(Button5.frame.size.width/160 * 20.0)
         
         Button7.setTitle("12", for: [])
         Button7.frame.size = getSizeForButton()
@@ -41,7 +50,9 @@ class FourthViewController: UIViewController{
         Button7.borderWidth = 7
         Button7.cornerRadius = Button7.frame.size.width / 2.0
         Button7.center = CGPoint(x: self.view.center.x / 2.0, y: self.view.center.y * 4/3)
-        label7.center = CGPoint(x: self.view.center.x/2.0, y: self.view.center.y * 4/3 + Button7.frame.height/4.0)
+        label7.text = "SP02"
+        label7.center = CGPoint(x: self.view.center.x/2.0, y: self.view.center.y * 4/3 + Button5.frame.height/4.0)
+        label7.font = label7.font.withSize(Button5.frame.size.width/160 * 20.0)
         
         Button8.setTitle("5", for: [])
         Button8.frame.size = getSizeForButton()
@@ -49,6 +60,9 @@ class FourthViewController: UIViewController{
         Button8.borderWidth = 7
         Button8.cornerRadius = Button8.frame.size.width / 2.0
         Button8.center = CGPoint(x: self.view.center.x * 1.5, y: self.view.center.y * 4/3)
+        label8.text = "sys"
+        label8.center = CGPoint(x: self.view.center.x * 1.5, y: self.view.center.y * 4/3 + Button5.frame.height/4.0)
+        label8.font = label8.font.withSize(Button5.frame.size.width/160 * 20.0)
         // Do any additional setup after loading the view.
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

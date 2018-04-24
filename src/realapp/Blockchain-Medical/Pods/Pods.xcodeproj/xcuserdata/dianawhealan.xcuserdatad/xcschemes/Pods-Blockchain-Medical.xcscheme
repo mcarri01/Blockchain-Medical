@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00A38BE311573DE647E4BBC8785F914C"
-               BuildableName = "gRPCCertificates.bundle"
-               BlueprintName = "gRPC-gRPCCertificates"
+               BlueprintIdentifier = "451E2C54083C6E4B55C59F77836D9AD7"
+               BuildableName = "Pods_Blockchain_Medical.framework"
+               BlueprintName = "Pods-Blockchain-Medical"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "00A38BE311573DE647E4BBC8785F914C"
-            BuildableName = "gRPCCertificates.bundle"
-            BlueprintName = "gRPC-gRPCCertificates"
+            BlueprintIdentifier = "451E2C54083C6E4B55C59F77836D9AD7"
+            BuildableName = "Pods_Blockchain_Medical.framework"
+            BlueprintName = "Pods-Blockchain-Medical"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

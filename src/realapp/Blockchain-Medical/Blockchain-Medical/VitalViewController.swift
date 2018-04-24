@@ -13,7 +13,7 @@ import SSLService
 
 class VitalViewController: UIViewController {
 
-    
+    var user = ""
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var chtChart: LineChartView!
     var numbers : [Double] = [  ]
