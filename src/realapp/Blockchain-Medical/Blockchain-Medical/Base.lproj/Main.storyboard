@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIz-Cz-A5F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PIz-Cz-A5F">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01V-a5-hFX" customClass="CVCalendarMenuView" customModule="CVCalendar">
                                 <rect key="frame" x="0.0" y="128" width="375" height="16"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.24123018979999999" green="0.5741075873" blue="0.80075424910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="9pv-A4-QxB" id="Xg4-2R-ytp"/>
                                 </connections>
@@ -581,7 +581,7 @@
                     <view key="view" contentMode="scaleToFill" id="bSM-u0-pm7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1079993316" green="0.71153492190000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="4OC-JW-b6a"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZSW-1q-GcW"/>
@@ -688,6 +688,7 @@
                         <segue destination="Fe4-sT-Itv" kind="relationship" relationship="viewControllers" id="Te6-jW-FRU"/>
                         <segue destination="FMm-Vk-VRq" kind="relationship" relationship="viewControllers" id="WnA-iz-QcD"/>
                         <segue destination="H0I-3A-ffH" kind="relationship" relationship="viewControllers" id="Mgh-fX-b00"/>
+                        <segue destination="DfX-44-hzR" kind="relationship" relationship="viewControllers" id="ggA-er-2TH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -753,6 +754,43 @@
             </objects>
             <point key="canvasLocation" x="-56" y="9.8950524737631191"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="YVK-fn-nF1">
+            <objects>
+                <viewController id="DfX-44-hzR" customClass="SettingsViewController" customModule="Blockchain_Medical" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tKQ-pm-kc1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyJ-Cp-GxY">
+                                <rect key="frame" x="16" y="313" width="343" height="41"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutAction" destination="DfX-44-hzR" eventType="touchUpInside" id="dBw-zl-HCZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.3294117647" green="0.77647058820000003" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gyJ-Cp-GxY" firstAttribute="trailing" secondItem="tKQ-pm-kc1" secondAttribute="trailingMargin" id="DX2-JP-8Lb"/>
+                            <constraint firstItem="gyJ-Cp-GxY" firstAttribute="centerY" secondItem="tKQ-pm-kc1" secondAttribute="centerY" id="PHg-5i-QF7"/>
+                            <constraint firstItem="gyJ-Cp-GxY" firstAttribute="leading" secondItem="tKQ-pm-kc1" secondAttribute="leadingMargin" id="ooz-Vc-q4k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="avE-OJ-q4a"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="icons8-settings-32" id="NzP-Of-KmH"/>
+                    <connections>
+                        <segue destination="PIz-Cz-A5F" kind="show" identifier="logout" id="1he-eX-gJ2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZKT-30-geT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-954.39999999999998" y="717.39130434782612"/>
+        </scene>
         <!--Messages-->
         <scene sceneID="TJH-wd-8xh">
             <objects>
@@ -802,6 +840,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Clinicians" id="upj-Ec-E7a"/>
                     <connections>
+                        <outlet property="memberTable" destination="OnP-gv-esO" id="Dcr-2p-dhX"/>
                         <segue destination="WRx-Yq-TaG" kind="show" identifier="chat" id="0RI-Dq-OI4"/>
                     </connections>
                 </tableViewController>
@@ -814,10 +853,11 @@
         <image name="comms" width="36" height="36"/>
         <image name="heart2" width="36" height="36"/>
         <image name="icons8-heart-monitor-64" width="64" height="64"/>
+        <image name="icons8-settings-32" width="32" height="32"/>
         <image name="schedule" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lmV-WB-rGa"/>
+        <segue reference="ChS-9F-7dV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.56470588239999997" green="0.98823529409999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

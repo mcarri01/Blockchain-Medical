@@ -7,46 +7,49 @@
 //
 
 import UIKit
+import Firestore
 import FirebaseAuth
 
 class ClinicianViewController: UITableViewController{
-   
-    /*let clinicians = ["Dr.Tom", "Dr.Ben", "Dr.Emma","Dr.Matt", "Dr.Diana"]
-    
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return(clinicians.count)
-    }
 
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "clinicianCell")
-        cell.textLabel?.text = clinicians[indexPath.row]
-        return(cell)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }*/
-    
-    
-    
-    
-    
-    
+    let typeSwap: [String: String] = ["clinician": "patients", "patient": "clinicians"]
+    @IBOutlet var memberTable: UITableView!
     let user = Auth.auth().currentUser!.uid
-    var clinicians = [String]()
+    var members = [(name: String, id: String)]()
+    
+    private func loadList() {
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(user).getDocument {
+            (document, error) in
+            if let document = document, document.exists {
+                let type = document.data()["type"] as! String
+                let list = document.data()[self.typeSwap[type]!] as! NSArray
+                for elem in list {
+                    db.collection("users").document(elem as! String).getDocument { (doc, error) in
+                        if let doc = doc, document.exists {
+                            let data = doc.data()
+                            self.members.append((name: data["name"] as! String, id: elem as! String))
+                            self.memberTable.reloadData()
+                        }
+                        else {
+                            print("Error fetching documents: \(String(describing: error))")
+                            return
+                        }
+                    }
+                }
+            }
+            else {
+                print("Error fetching documents: \(String(describing: error))")
+                return
+            }
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        clinicians = ["Dr. Tom", "Dr. Ben", "Dr. Emma", "Dr. Matt", "Dr. Diana"]
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadList()
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,14 +66,14 @@ class ClinicianViewController: UITableViewController{
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return clinicians.count
+        return members.count
     }
     
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "clinicianCell", for: indexPath)
-        cell.textLabel?.text = clinicians[indexPath.row]
+        cell.textLabel?.text = members[indexPath.row].name
         
 
         return cell

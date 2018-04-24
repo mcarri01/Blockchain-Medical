@@ -28,6 +28,7 @@
 		9B2D851E207E885500B17901 /* VitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D851D207E885500B17901 /* VitalViewController.swift */; };
 		9B3AC9CE208EACC0007C6725 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AC9CD208EACC0007C6725 /* LoginViewController.swift */; };
 		9B3B38B12085401400A01E22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B3B38B02085401400A01E22 /* GoogleService-Info.plist */; };
+		9B425ADD208FE9F2008159FA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B425ADC208FE9F2008159FA /* SettingsViewController.swift */; };
 		9BEB5DC5208596AD00F24E49 /* ClinicianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB5DC4208596AD00F24E49 /* ClinicianViewController.swift */; };
 		AE2CD28F2079B0670000E007 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2CD28E2079B0670000E007 /* PageVC.swift */; };
 		AE2CD2952079C19E0000E007 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2CD2942079C19E0000E007 /* FourthViewController.swift */; };
@@ -82,6 +83,7 @@
 		9B2D851D207E885500B17901 /* VitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalViewController.swift; sourceTree = "<group>"; };
 		9B3AC9CD208EACC0007C6725 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9B3B38B02085401400A01E22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9B425ADC208FE9F2008159FA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9BEB5DC4208596AD00F24E49 /* ClinicianViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicianViewController.swift; sourceTree = "<group>"; };
 		AE2CD28E2079B0670000E007 /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
 		AE2CD2942079C19E0000E007 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				3F0747372073E9A900E9B7B3 /* ThirdViewController.swift */,
 				AE2CD28E2079B0670000E007 /* PageVC.swift */,
 				3F07470D2073E8E000E9B7B3 /* Main.storyboard */,
+				9B425ADC208FE9F2008159FA /* SettingsViewController.swift */,
 				3FF1041420892F750061F4E9 /* AddReminderViewController.swift */,
 				9BEB5DC4208596AD00F24E49 /* ClinicianViewController.swift */,
 				3F0747102073E8E000E9B7B3 /* Assets.xcassets */,
@@ -462,6 +465,7 @@
 				3FF994512088F6F9009266A4 /* DSP.swift in Sources */,
 				9BEB5DC5208596AD00F24E49 /* ClinicianViewController.swift in Sources */,
 				3F0747382073E9A900E9B7B3 /* ThirdViewController.swift in Sources */,
+				9B425ADD208FE9F2008159FA /* SettingsViewController.swift in Sources */,
 				9B2D851E207E885500B17901 /* VitalViewController.swift in Sources */,
 				300D2B11207D202800C9B8BB /* BinUtils.swift in Sources */,
 				9B3AC9CE208EACC0007C6725 /* LoginViewController.swift in Sources */,
