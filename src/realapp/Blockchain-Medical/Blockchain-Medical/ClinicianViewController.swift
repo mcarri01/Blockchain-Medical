@@ -89,6 +89,7 @@ class ClinicianViewController: UITableViewController{
         let senderCell = sender as! UITableViewCell
         if let vc = segue.destination as? MessagesViewController {
             vc.title = senderCell.textLabel?.text
+            vc.receiverId = members.filter{ $0.0 == senderCell.textLabel?.text}[0].id
         }
     }
 

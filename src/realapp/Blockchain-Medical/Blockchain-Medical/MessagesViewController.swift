@@ -14,6 +14,7 @@ import FirebaseAuth
 class MessagesViewController: JSQMessagesViewController {
 
     let user = Auth.auth().currentUser!.uid
+    var receiverId = ""
     // array to store messages
     var messages = [JSQMessage]()
     
@@ -30,36 +31,65 @@ class MessagesViewController: JSQMessagesViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         senderId = user
+        
         senderDisplayName = "1234"
         
         inputToolbar.contentView.leftBarButtonItem = nil
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
-        let db = Firestore.firestore()
-       
-        db.collection("messages").order(by: "date", descending: true).limit(to: 10).whereField("senderId", isEqualTo: self.senderId)
-            .addSnapshotListener {querySnapshot, error in
-                guard let documents = querySnapshot?.documents else {
-                    print("Error fetching documents: \(String(describing: error))")
-                    return
+        
+        updateMessages()
+    }
+        private func updateMessages() {
+            let db = Firestore.firestore()
+            
+            self.messages = []
+            db.collection("messages").order(by: "date", descending: true).limit(to: 10).whereField("senderId", isEqualTo: self.senderId).whereField("receiverId", isEqualTo: receiverId)
+                .getDocuments() {querySnapshot, error in
+                    guard let documents = querySnapshot?.documents else {
+                        print("Error fetching documents: \(String(describing: error))")
+                        return
+                    }
+                    //for i in 0 ... 10 {
+                    for document in documents {
+                        
+                        let data = document.data()
+                        let id = data["senderId"]
+                        let text = data["message"]
+                        if let message = JSQMessage(senderId: id as! String, displayName: self.title, text: text as! String)
+                        {
+                            self.messages.insert(message, at: 0)
+                            self.finishReceivingMessage()
+                        }
+                        
+                    }
                 }
-                self.messages = []
-                //for i in 0 ... 10 {
-                for document in documents {
-                    
-                    let data = document.data()
-                    let id = data["senderId"]
-                    let text = data["message"]
-                    if let message = JSQMessage(senderId: id as! String, displayName: "Bob", text: text as! String)
-                    {
-                        self.messages.insert(message, at: 0)
-                        self.finishReceivingMessage()
+            db.collection("messages").order(by: "date", descending: true).limit(to: 10).whereField("senderId", isEqualTo: self.receiverId).whereField("receiverId", isEqualTo: self.senderId)
+                .getDocuments() {querySnapshot, error in
+                    guard let documents = querySnapshot?.documents else {
+                        print("Error fetching documents: \(String(describing: error))")
+                        return
                     }
                     
-                }
+                    //for i in 0 ... 10 {
+                    for document in documents {
+                        
+                        let data = document.data()
+                        let id = data["senderId"]
+                        let text = data["message"]
+                        if let message = JSQMessage(senderId: id as! String, displayName: "Bob", text: text as! String)
+                        {
+                            self.messages.insert(message, at: 0)
+                            self.finishReceivingMessage()
+                        }
+                        
+                    }
             }
-        }
+    }
+    
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -75,6 +105,7 @@ class MessagesViewController: JSQMessagesViewController {
         let db = Firestore.firestore()
         db.collection("messages").addDocument(data: [
             "senderId": senderId,
+            "receiverId": receiverId,
             "message": text,
             "date": date]) { (error:Error?) in
                 if let error = error {
@@ -84,6 +115,7 @@ class MessagesViewController: JSQMessagesViewController {
                 }
         }
         finishSendingMessage()
+        updateMessages()
     }
     
     
