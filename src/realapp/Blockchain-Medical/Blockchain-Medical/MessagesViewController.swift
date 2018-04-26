@@ -62,7 +62,7 @@ class MessagesViewController: JSQMessagesViewController {
                     let data = document.data()
                     let id = data["senderId"]
                     let text = data["message"]
-                    if let message = JSQMessage(senderId: id as! String, displayName: self.title, text: text as! String)
+                    if let message = JSQMessage(senderId: id as! String, displayName: "Me", text: text as! String)
                     {
                         self.senderMessages.insert((message, data["date"] as! Date), at: 0)
                         
@@ -88,7 +88,7 @@ class MessagesViewController: JSQMessagesViewController {
                     let data = document.data()
                     let id = data["senderId"]
                     let text = data["message"]
-                    if let message = JSQMessage(senderId: id as! String, displayName: "Bob", text: text as! String)
+                    if let message = JSQMessage(senderId: id as! String, displayName: self.title, text: text as! String)
                     {
                         self.receiverMessages.insert((message, data["date"] as! Date), at: 0)
                         
