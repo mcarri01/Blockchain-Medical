@@ -8,9 +8,12 @@
 
 import UIKit
 import Firestore
+import FirebaseAuth
 
 class AddReminderViewController: UIViewController {
 
+    let user = Auth.auth().currentUser!.uid
+    
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var input: UITextField!
     @IBOutlet weak var notes: UITextView!
@@ -25,7 +28,8 @@ class AddReminderViewController: UIViewController {
         db.collection("reminders").addDocument(data:
         ["title": input.text,
          "notes": notes.text,
-         "date": datePicker.date - 4 *  3600]) { err in
+         "date": datePicker.date - 4 *  3600,
+         "userID": user]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {

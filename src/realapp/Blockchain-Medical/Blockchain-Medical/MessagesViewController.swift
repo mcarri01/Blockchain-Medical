@@ -9,10 +9,16 @@
 import UIKit
 import JSQMessagesViewController
 import Firestore
+import FirebaseAuth
 
 class MessagesViewController: JSQMessagesViewController {
 
+    let user = Auth.auth().currentUser!.uid
+    var receiverId = ""
+    private var currentCalendar: Calendar?
     // array to store messages
+    var senderMessages = [(JSQMessage, Date)]()
+    var receiverMessages = [(JSQMessage, Date)]()
     var messages = [JSQMessage]()
     
     // set colors for messages (blue outgoing, gray incoming)
@@ -27,7 +33,14 @@ class MessagesViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        senderId = "1234"
+        senderId = user
+        let timeZoneBias = 0
+        currentCalendar = Calendar(identifier: .gregorian)
+        currentCalendar?.locale = Locale(identifier: "en_US")
+        if let timeZone = TimeZone(secondsFromGMT: -timeZoneBias * 60) {
+            currentCalendar?.timeZone = timeZone
+        }
+        
         senderDisplayName = "1234"
         
         inputToolbar.contentView.leftBarButtonItem = nil
@@ -35,29 +48,64 @@ class MessagesViewController: JSQMessagesViewController {
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
         let db = Firestore.firestore()
-       
-        db.collection("messages").order(by: "date", descending: true).limit(to: 10).whereField("senderId", isEqualTo: self.senderId)
+        
+        db.collection("messages").order(by: "date", descending: true).limit(to: 10).whereField("senderId", isEqualTo: self.senderId).whereField("receiverId", isEqualTo: receiverId)
             .addSnapshotListener {querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("Error fetching documents: \(String(describing: error))")
                     return
                 }
-                self.messages = []
+                self.senderMessages = []
                 //for i in 0 ... 10 {
                 for document in documents {
                     
                     let data = document.data()
                     let id = data["senderId"]
                     let text = data["message"]
-                    if let message = JSQMessage(senderId: id as! String, displayName: "Bob", text: text as! String)
+                    if let message = JSQMessage(senderId: id as! String, displayName: "Me", text: text as! String)
                     {
-                        self.messages.insert(message, at: 0)
-                        self.finishReceivingMessage()
+                        self.senderMessages.insert((message, data["date"] as! Date), at: 0)
+                        
                     }
                     
                 }
+                var totalMessages = self.senderMessages + self.receiverMessages
+                totalMessages.sort(by: self.compareTimes(first:second:))
+                self.messages = totalMessages.map { $0.0 }
+                self.finishReceivingMessage()
             }
+        
+        db.collection("messages").order(by: "date", descending: true).limit(to: 10).whereField("senderId", isEqualTo: self.receiverId).whereField("receiverId", isEqualTo: self.senderId)
+            .addSnapshotListener {querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching documents: \(String(describing: error))")
+                    return
+                }
+                self.receiverMessages = []
+                //for i in 0 ... 10 {
+                for document in documents {
+                    
+                    let data = document.data()
+                    let id = data["senderId"]
+                    let text = data["message"]
+                    if let message = JSQMessage(senderId: id as! String, displayName: self.title, text: text as! String)
+                    {
+                        self.receiverMessages.insert((message, data["date"] as! Date), at: 0)
+                        
+                    }
+                    
+                }
+                var totalMessages = self.receiverMessages + self.senderMessages
+                totalMessages.sort(by: self.compareTimes(first:second:))
+                self.messages = totalMessages.map { $0.0 }
+                self.finishReceivingMessage()
         }
+    }
+    
+    private func compareTimes(first: (_: JSQMessage, date: Date), second: (_ : JSQMessage, date: Date)) -> Bool {
+        return first.date < second.date
+    }
+   
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -73,6 +121,7 @@ class MessagesViewController: JSQMessagesViewController {
         let db = Firestore.firestore()
         db.collection("messages").addDocument(data: [
             "senderId": senderId,
+            "receiverId": receiverId,
             "message": text,
             "date": date]) { (error:Error?) in
                 if let error = error {

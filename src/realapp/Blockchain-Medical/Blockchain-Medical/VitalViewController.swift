@@ -10,10 +10,11 @@ import UIKit
 import Socket
 import Charts
 import SSLService
+import FirebaseAuth
 
 class VitalViewController: UIViewController {
 
-    var user = ""
+    let user = Auth.auth().currentUser!.uid
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var chtChart: LineChartView!
     var numbers : [Double] = [  ]
