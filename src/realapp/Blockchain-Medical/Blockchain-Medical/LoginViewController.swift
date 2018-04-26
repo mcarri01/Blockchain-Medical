@@ -15,14 +15,27 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordView: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let border = CALayer()
-        let width = CGFloat(2.0)
-        border.borderColor  = UIColor.darkGray.cgColor
-        border.frame = CGRect(x: 0, y: usernameView.frame.size.height - width, width: usernameView.frame.size.width, height: usernameView.frame.size.height)
+        usernameView.center = CGPoint(x: self.view.center.x, y: self.view.center.y * 1.25)
+        let bottomLine1 = CALayer()
+        bottomLine1.frame = CGRect(x: 0.0, y: 30, width: UIScreen.main.bounds.width * 1/2, height: 1.0)
+        bottomLine1.backgroundColor = UIColor.white.cgColor
+        usernameView.borderStyle = UITextBorderStyle.none
+        usernameView.layer.addSublayer(bottomLine1)
+        passwordView.center = CGPoint(x: self.view.center.x * 3/4, y: self.view.center.y * 1.35)
+        let bottomLine2 = CALayer()
+        bottomLine2.frame = CGRect(x: 0.0, y: 30, width: UIScreen.main.bounds.width * 1/2, height: 1.0)
+        bottomLine2.backgroundColor = UIColor.white.cgColor
+        passwordView.borderStyle = UITextBorderStyle.none
+        passwordView.layer.addSublayer(bottomLine2)
+        //let border = CALayer()
+        //let width = CGFloat(2.0)
         
-        border.borderWidth = width
-        usernameView.layer.addSublayer(border)
-        passwordView.layer.addSublayer(border)
+        //border.borderColor  = UIColor.darkGray.cgColor
+        //border.frame = CGRect(x: 0, y: usernameView.frame.size.height - width, width: usernameView.frame.size.width, height: usernameView.frame.size.height)
+        
+        //border.borderWidth = width
+        //usernameView.layer.addSublayer(border)
+        //passwordView.layer.addSublayer(border)
         // Do any additional setup after loading the view.
     }
 
