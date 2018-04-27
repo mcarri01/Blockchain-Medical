@@ -43,7 +43,7 @@ class DSP {
         return out
     }
     
-    func highPassFilter(input: [Double]) -> [Double] {
+    func highPassFilter(input: [Double], cutoff: Double) -> [Double] {
         
         
         //define the period
@@ -66,7 +66,7 @@ class DSP {
         
         //frequency in Hertz
         let Fsamp = 125.0
-        let Fc = 25.0
+        let Fc = cutoff
         let freq_cutoff = Fc/Fsamp
         
         // set limits
@@ -105,7 +105,7 @@ class DSP {
         return result
     }
     
-    func lowPassFilter (input: [Double]) -> [Double] {
+    func lowPassFilter (input: [Double], cutoff: Double) -> [Double] {
 //        //define the period
 //        let T = 1.0/Fsamp
 //
@@ -130,7 +130,7 @@ class DSP {
         let Fsamp = 125.0
         
         //set the cutoff frequency
-        let Fc = 12.5
+        let Fc = cutoff
         let freq_cutoff = Fc/Fsamp;
         
         //set the limits of the sinc even though it is infinite
@@ -164,7 +164,7 @@ class DSP {
         
     }
     
-    func movingAverageFilter (input: [Double]) -> [Double] {
+    func movingAverageFilter (input: [Double], delay: Double) -> [Double] {
 //        let z = Array(repeating: 0.0, count: 200)
 //        let o = Array(repeating: 1.0, count: 200)
 //
