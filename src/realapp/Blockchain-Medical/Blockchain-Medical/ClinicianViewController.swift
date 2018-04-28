@@ -14,7 +14,6 @@ class ClinicianViewController: UITableViewController{
 
     let typeSwap: [String: String] = ["clinician": "patients", "patient": "clinicians"]
     @IBOutlet var memberTable: UITableView!
-    let user = Auth.auth().currentUser!.uid
     var members = [(name: String, id: String)]()
     
     private func loadList() {

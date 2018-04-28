@@ -13,7 +13,6 @@ import FirebaseAuth
 
 class MessagesViewController: JSQMessagesViewController {
 
-    let user = Auth.auth().currentUser!.uid
     var receiverId = ""
     private var currentCalendar: Calendar?
     // array to store messages

@@ -11,9 +11,7 @@ import Firestore
 import FirebaseAuth
 
 class AddReminderViewController: UIViewController {
-
-    let user = Auth.auth().currentUser!.uid
-    
+  
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var input: UITextField!
     @IBOutlet weak var notes: UITextView!

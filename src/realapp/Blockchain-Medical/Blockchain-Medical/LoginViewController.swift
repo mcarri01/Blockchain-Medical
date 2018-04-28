@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firestore
 
 class LoginViewController: UIViewController {
 
@@ -41,10 +42,19 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginAction() {
         if let email = usernameView.text, let pass = passwordView.text {
-            Auth.auth().signIn(withEmail: email, password: pass, completion: {(user, error) in
-                if let u = user {
+            Auth.auth().signIn(withEmail: email, password: pass, completion: {(currUser, error) in
+                if let u = currUser {
                     print(u)
-                   self.performSegue(withIdentifier: "goToHome", sender: nil)
+                    let db = Firestore.firestore()
+                    db.collection("users").document(u.uid).getDocument {
+                        (document, error) in
+                        if document?.data()["type"] as! String == "clinician" {
+                            self.performSegue(withIdentifier: "pickPatient", sender: nil)
+                        } else {
+                           user = u.uid
+                           self.performSegue(withIdentifier: "goToHome", sender: nil)
+                        }
+                    }
                 }
                 else {
                     print("No user")
@@ -57,12 +67,7 @@ class LoginViewController: UIViewController {
 //        appDelegateTemp?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let vc = segue.destination as? VitalViewController {
-//            vc.user = usernameView.text!
-//        }
-//    }
-    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

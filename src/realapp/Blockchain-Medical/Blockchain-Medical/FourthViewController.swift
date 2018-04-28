@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firestore
+import FirebaseAuth
 
 class FourthViewController: UIViewController{
+    
     @IBOutlet weak var Button5: RoundButton!
     @IBOutlet weak var Button6: RoundButton!
     @IBOutlet weak var Button7: RoundButton!

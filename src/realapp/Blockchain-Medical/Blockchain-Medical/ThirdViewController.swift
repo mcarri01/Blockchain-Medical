@@ -7,9 +7,10 @@
 //"0": "Heart Rate", "1": "ECG", "2": "Temperature", "3": "Diastolic Blood", "4": "Plethysmograph", "5": "Respiration", "6": "Oxygen", "7": "Systolic Blood"
 
 import UIKit
+import FirebaseAuth
+import Firestore
 
 class ThirdViewController: UIViewController {
-
     @IBOutlet weak var test: RoundButton!
     @IBOutlet weak var Button2: RoundButton!
     @IBOutlet weak var Button3: RoundButton!

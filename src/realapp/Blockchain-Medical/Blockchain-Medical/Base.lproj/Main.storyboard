@@ -583,6 +583,38 @@
             </objects>
             <point key="canvasLocation" x="1618" y="797"/>
         </scene>
+        <!--Patient Table View Controller-->
+        <scene sceneID="4qP-iq-4iA">
+            <objects>
+                <tableViewController id="vII-ZE-1lX" customClass="PatientTableViewController" customModule="Blockchain_Medical" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fra-HH-t6Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="patientCell" id="bq9-v0-Kcq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bq9-v0-Kcq" id="eEJ-9f-bRe">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vII-ZE-1lX" id="Ah8-vQ-9xd"/>
+                            <outlet property="delegate" destination="vII-ZE-1lX" id="Phc-qV-Bqh"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="memberTable" destination="Fra-HH-t6Z" id="yA4-w9-lKK"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="goToHome" id="e9e-N4-xf9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Usd-P8-FI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1540" y="-766"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="ZrQ-GP-q6j">
             <objects>
@@ -660,11 +692,12 @@
                         <outlet property="passwordView" destination="EvJ-NL-fpd" id="S8A-Gl-lf6"/>
                         <outlet property="usernameView" destination="4Nw-b2-BAe" id="4L0-Ds-EEN"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="goToHome" id="HT7-mL-heo"/>
+                        <segue destination="vII-ZE-1lX" kind="show" identifier="pickPatient" id="sbb-lf-4p5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hN-Bd-wCF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1698.4000000000001" y="-71.514242878560722"/>
+            <point key="canvasLocation" x="-1948" y="-39"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -849,6 +882,7 @@
         <image name="schedule" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="e9e-N4-xf9"/>
         <segue reference="ChS-9F-7dV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.56470588239999997" green="0.98823529409999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

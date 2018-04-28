@@ -13,7 +13,6 @@ import FirebaseAuth
 
 class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendarMenuViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    let user = Auth.auth().currentUser!.uid
     var reminders: [(title : String, notes: String, date : Date)] = []
     var dailyReminders: [(title : String, notes: String, date : Date)] = []
     
@@ -56,6 +55,7 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(user)
         self.title = "Schedule"
         if let currentCalendar = currentCalendar {
             dateLabel.text = CVDate(date: Date(), calendar: currentCalendar).globalDescription

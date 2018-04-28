@@ -15,8 +15,6 @@ import Firestore
 
 class VitalViewController: UIViewController {
 
-    
-    let user = Auth.auth().currentUser!.uid
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var chtChart: LineChartView!
     var numbers : [Double] = [  ]
@@ -301,7 +299,7 @@ class VitalViewController: UIViewController {
                 db.collection("vitals").addDocument(data:
                     ["type": self.vitalDict[self.id],
                      "data": self.masterPoints,
-                     "senderId": self.user,
+                     "senderId": user,
                      "date": Date()]) { err in
                         if let err = err {
                             print("Error adding document: \(err)")
