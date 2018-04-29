@@ -48,6 +48,9 @@ class ClinicianViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if isClinician {
+            performSegue(withIdentifier: "chat", sender: nil)
+        }
         loadList()
     }
     
@@ -85,10 +88,16 @@ class ClinicianViewController: UITableViewController{
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let senderCell = sender as! UITableViewCell
         if let vc = segue.destination as? MessagesViewController {
-            vc.title = senderCell.textLabel?.text
-            vc.receiverId = members.filter{ $0.0 == senderCell.textLabel?.text}[0].id
+            if isClinician {
+                vc.title = userName
+                vc.receiverId = user
+            } else {
+                let senderCell = sender as! UITableViewCell
+                vc.title = senderCell.textLabel?.text
+                vc.receiverId = members.filter{ $0.0 == senderCell.textLabel?.text}[0].id
+            }
+            
         }
     }
 

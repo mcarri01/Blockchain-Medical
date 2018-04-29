@@ -32,7 +32,7 @@ class MessagesViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        senderId = user
+        senderId = Auth.auth().currentUser?.uid
         let timeZoneBias = 0
         currentCalendar = Calendar(identifier: .gregorian)
         currentCalendar?.locale = Locale(identifier: "en_US")

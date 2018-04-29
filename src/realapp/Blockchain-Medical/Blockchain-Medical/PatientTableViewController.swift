@@ -86,6 +86,7 @@ class PatientTableViewController: UITableViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! UITableViewCell
         user = patients.filter{ $0.0 == cell.textLabel?.text as! String }[0].id
+        userName = cell.textLabel?.text as! String
         print(user)
         isClinician = true
     }

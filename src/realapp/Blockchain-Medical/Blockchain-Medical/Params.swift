@@ -9,4 +9,5 @@
 import Foundation
 
 var user = ""
+var userName = ""
 var isClinician = false
