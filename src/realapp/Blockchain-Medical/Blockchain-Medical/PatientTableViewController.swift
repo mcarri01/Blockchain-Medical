@@ -89,6 +89,7 @@ class PatientTableViewController: UITableViewController{
         userName = cell.textLabel?.text as! String
         print(user)
         isClinician = true
+        receiver = user
     }
     
 }

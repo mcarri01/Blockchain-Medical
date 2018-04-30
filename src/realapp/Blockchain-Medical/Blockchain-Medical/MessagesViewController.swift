@@ -31,7 +31,13 @@ class MessagesViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
+//        if receiverId == "" {
+//            receiverId = user
+//            title = userName
+//            print("inside")
+//            print(receiverId)
+//        }
+        receiverId = receiver
         senderId = Auth.auth().currentUser?.uid
         let timeZoneBias = 0
         currentCalendar = Calendar(identifier: .gregorian)
@@ -39,9 +45,9 @@ class MessagesViewController: JSQMessagesViewController {
         if let timeZone = TimeZone(secondsFromGMT: -timeZoneBias * 60) {
             currentCalendar?.timeZone = timeZone
         }
-        
-        senderDisplayName = "1234"
-        
+        self.title = receiverName
+        senderDisplayName = "Me"
+        print(senderDisplayName)
         inputToolbar.contentView.leftBarButtonItem = nil
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero

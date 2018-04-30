@@ -19,6 +19,9 @@ class SettingsViewController: UIViewController {
         } catch let signOutError as NSError {
             print("Error signing out: \(signOutError)")
         }
+        isClinician = false
+        user = ""
+        userName = ""
         performSegue(withIdentifier: "logout", sender: nil)
     }
     override func viewDidLoad() {

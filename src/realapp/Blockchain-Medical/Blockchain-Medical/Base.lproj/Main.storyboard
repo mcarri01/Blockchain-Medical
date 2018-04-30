@@ -567,21 +567,36 @@
             </objects>
             <point key="canvasLocation" x="1440.8" y="-1195.0524737631185"/>
         </scene>
-        <!--Messages View Controller-->
+        <!--Messages-->
         <scene sceneID="5dR-AH-OgU">
             <objects>
-                <viewController id="WRx-Yq-TaG" customClass="MessagesViewController" customModule="Blockchain_Medical" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WRx-Yq-TaG" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bSM-u0-pm7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rk0-UQ-wMq">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <connections>
+                                    <segue destination="zJh-u7-M0U" kind="embed" id="Qi2-Ry-uc3"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" red="0.1079993316" green="0.71153492190000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Rk0-UQ-wMq" firstAttribute="top" secondItem="4OC-JW-b6a" secondAttribute="top" constant="-20" id="6s4-2h-dSN"/>
+                            <constraint firstItem="Rk0-UQ-wMq" firstAttribute="leading" secondItem="bSM-u0-pm7" secondAttribute="leadingMargin" constant="-16" id="oB5-ds-LaQ"/>
+                            <constraint firstItem="Rk0-UQ-wMq" firstAttribute="bottom" secondItem="4OC-JW-b6a" secondAttribute="bottom" id="pJh-8T-Ulw"/>
+                            <constraint firstItem="Rk0-UQ-wMq" firstAttribute="trailing" secondItem="bSM-u0-pm7" secondAttribute="trailingMargin" constant="16" id="zgi-Fz-yzx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4OC-JW-b6a"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Messages" image="comms" selectedImage="comms" id="PKh-pY-GIz"/>
                     <navigationItem key="navigationItem" id="ZSW-1q-GcW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hU-dP-KvX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="797"/>
+            <point key="canvasLocation" x="1616.8" y="796.55172413793105"/>
         </scene>
         <!--Patient Table View Controller-->
         <scene sceneID="4qP-iq-4iA">
@@ -608,12 +623,12 @@
                     </tableView>
                     <connections>
                         <outlet property="memberTable" destination="Fra-HH-t6Z" id="yA4-w9-lKK"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="goToHome" id="e9e-N4-xf9"/>
+                        <segue destination="Wgj-B0-Kxg" kind="show" identifier="goToHome" id="b75-Na-fsS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Usd-P8-FI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1540" y="-766"/>
+            <point key="canvasLocation" x="-3050" y="-904"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ZrQ-GP-q6j">
@@ -697,7 +712,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hN-Bd-wCF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1948" y="-39"/>
+            <point key="canvasLocation" x="-2575" y="98"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -718,7 +733,28 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-855" y="-70"/>
+            <point key="canvasLocation" x="-1540" y="9"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="xvC-4i-BKI">
+            <objects>
+                <tabBarController id="Wgj-B0-Kxg" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="28b-Jo-1wD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.094117647058823528" green="0.20784313725490194" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.56470588239999997" green="0.98823529409999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Fe4-sT-Itv" kind="relationship" relationship="viewControllers" id="a6x-5p-FYj"/>
+                        <segue destination="FMm-Vk-VRq" kind="relationship" relationship="viewControllers" id="qg9-aU-ueM"/>
+                        <segue destination="WRx-Yq-TaG" kind="relationship" relationship="viewControllers" id="QVh-Ji-473"/>
+                        <segue destination="DfX-44-hzR" kind="relationship" relationship="viewControllers" id="MSV-jK-NET"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0rx-x7-meH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1700" y="-1594"/>
         </scene>
         <!--Vitals-->
         <scene sceneID="hI8-RU-pL5">
@@ -779,7 +815,7 @@
             </objects>
             <point key="canvasLocation" x="-56" y="9.8950524737631191"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="YVK-fn-nF1">
             <objects>
                 <viewController id="DfX-44-hzR" customClass="SettingsViewController" customModule="Blockchain_Medical" customModuleProvider="target" sceneMemberID="viewController">
@@ -807,7 +843,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="avE-OJ-q4a"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="icons8-settings-32" id="NzP-Of-KmH"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="icons8-settings-32" id="NzP-Of-KmH"/>
                     <connections>
                         <segue destination="PIz-Cz-A5F" kind="show" identifier="logout" id="1he-eX-gJ2"/>
                     </connections>
@@ -873,6 +909,20 @@
             </objects>
             <point key="canvasLocation" x="793" y="806"/>
         </scene>
+        <!--Messages View Controller-->
+        <scene sceneID="bg6-ts-p7A">
+            <objects>
+                <viewController id="zJh-u7-M0U" customClass="MessagesViewController" customModule="Blockchain_Medical" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wvI-XR-3ko">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oom-IY-r35" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946" y="1446"/>
+        </scene>
     </scenes>
     <resources>
         <image name="comms" width="36" height="36"/>
@@ -882,7 +932,10 @@
         <image name="schedule" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e9e-N4-xf9"/>
+        <segue reference="MSV-jK-NET"/>
+        <segue reference="qg9-aU-ueM"/>
+        <segue reference="a6x-5p-FYj"/>
+        <segue reference="0RI-Dq-OI4"/>
         <segue reference="ChS-9F-7dV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.56470588239999997" green="0.98823529409999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

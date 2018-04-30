@@ -88,17 +88,20 @@ class ClinicianViewController: UITableViewController{
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? MessagesViewController {
-            if isClinician {
-                vc.title = userName
-                vc.receiverId = user
-            } else {
-                let senderCell = sender as! UITableViewCell
-                vc.title = senderCell.textLabel?.text
-                vc.receiverId = members.filter{ $0.0 == senderCell.textLabel?.text}[0].id
-            }
-            
-        }
+        print(segue.destination)
+        let senderCell = sender as! UITableViewCell
+        receiver = members.filter{ $0.0 == senderCell.textLabel?.text}[0].id
+        receiverName = senderCell.textLabel?.text as! String
+    
+//        if let vc = segue.destination as? MessagesViewController {
+//
+//            let senderCell = sender as! UITableViewCell
+//            vc.title = senderCell.textLabel?.text
+//            vc.receiverId = members.filter{ $0.0 == senderCell.textLabel?.text}[0].id
+//            print("outside")
+//            print(vc.receiverId)
+//
+//        }
     }
 
     /*
