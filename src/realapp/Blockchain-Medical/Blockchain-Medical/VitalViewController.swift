@@ -15,10 +15,12 @@ import Firestore
 
 class VitalViewController: UIViewController {
 
+    @IBOutlet weak var averageLabelView: UILabel!
     @IBOutlet weak var labelView: UILabel!
     //@IBOutlet weak var textView: UITextView!
     @IBOutlet weak var chtChart: LineChartView!
     var numbers : [Double] = [  ]
+    var gettingPoints = true
     @IBOutlet weak var connectBar: UIProgressView!
     
     
@@ -38,6 +40,8 @@ class VitalViewController: UIViewController {
     var ecgBuffer: [Double] = [ ]
     
     var masterPoints: [Double] = []
+    var averages: [Double] = []
+    var averageSet = false
     
     var dsp = DSP()
     
@@ -50,6 +54,7 @@ class VitalViewController: UIViewController {
     var streamFlag = false
     
     let vitalDict: [String: String] = ["0": "Heart Rate", "1": "ECG", "2": "Temperature", "3": "Diastolic Blood", "4": "Plethysmograph", "5": "Respiration", "6": "Oxygen", "7": "Systolic Blood"]
+    let scaleDict: [String: (Double, Double)] = ["0": (0, 0), "1": (-0.01, 1.065), "2": (0, 1), "3": (54, 90), "4": (0.891, 3.07), "5": (0, 1), "6": (0, 1), "7": (90, 139)]
     
     override func viewDidLoad() {
         //appendToTextField(string: id)
@@ -85,6 +90,7 @@ class VitalViewController: UIViewController {
             self.connect()
             self.connectBar.setProgress(1.0, animated: true)
         }
+        grabAverages(type: vitalDict[id]!)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -100,6 +106,7 @@ class VitalViewController: UIViewController {
     
     
     @IBAction func readButtonAction() {
+        connectBar.setProgress(0, animated: false)
         streamFlag = !streamFlag
         DispatchQueue.global(qos: .background).async {
             self.streamData()
@@ -119,6 +126,7 @@ class VitalViewController: UIViewController {
                 appendToTextField(string: "Connected!")
                 //appendToTextField(string: "Connected to host \(host) on port \(port)")
                 connected = true
+                updateGraph()
                 self.readButton.isHidden = false
             } catch {
                 //appendToTextField(string: "Connecting...")
@@ -151,28 +159,31 @@ class VitalViewController: UIViewController {
                 readData(count: count)
             
                 DispatchQueue.main.async {
+                    self.appendToTextField(string: "Reading data...")
                     self.updateGraph()
               //  }
             }
         }
     }
     
-    func grabAverages(type: String) -> [Double] {
-        var averages: [Double] = []
+    func grabAverages(type: String) {
         let db = Firestore.firestore()
         _ = db.collection("vitals").whereField("type", isEqualTo: type).whereField("senderId", isEqualTo: user).getDocuments {
             (querySnapshot, error) in
-            guard let documents = querySnapshot?.documents else {
+            if let documents = querySnapshot?.documents {
+                self.averages = []
+                for document in documents {
+                    print("adding an average")
+                    let data = document.data()
+                    self.averages.append(data["average"] as! Double)
+                }
+                self.updateGraph()
+            } else {
                 print("Error fetching documents: \(String(describing: error))")
                 return
-            }
-            for document in documents {
-                let data = document.data()
-                averages.append(data["average"] as! Double)
+   
             }
         }
-        while (averages.count == 0) {}
-        return averages
     }
     
     func updateGraph(){
@@ -186,8 +197,8 @@ class VitalViewController: UIViewController {
         
         var graphData : [Double] = [  ]
         switch vitalDict[id] {
-        case "Heart Rate"?:
-            graphData = HR
+//        case "Heart Rate"?:
+//            graphData = HR
         case "ECG"?:
             if ECG.count != 0 {
                 let ECGSlice: ArraySlice<Double> = ECG[5..<100]
@@ -195,20 +206,65 @@ class VitalViewController: UIViewController {
             } else {
                 graphData = ECG
             }
+            chtChart.leftAxis.axisMaximum = 500
+            chtChart.rightAxis.axisMaximum = 500
+            chtChart.leftAxis.axisMinimum = -500
+            chtChart.rightAxis.axisMinimum = -500
         case "Temperature"?:
-            graphData = temp
+            graphData = self.averages
+            print(graphData)
+            chtChart.leftAxis.axisMaximum = 110
+            chtChart.rightAxis.axisMaximum = 110
+            chtChart.leftAxis.axisMinimum = 70
+            chtChart.rightAxis.axisMinimum = 70
         case "Diastolic Blood"?:
-            graphData = DB
+   
+            graphData = self.averages
+            print(graphData)
+            chtChart.leftAxis.axisMaximum = 100
+            chtChart.rightAxis.axisMaximum = 100
+            chtChart.leftAxis.axisMinimum = 50
+            chtChart.rightAxis.axisMinimum = 50
         case "Plethysmograph"?:
-            graphData = pleth
+            
+            graphData = self.averages
+            print(graphData)
+            chtChart.leftAxis.axisMaximum = 5
+            chtChart.rightAxis.axisMaximum = 5
+            chtChart.leftAxis.axisMinimum = 0
+            chtChart.rightAxis.axisMinimum = 0
         case "Respiration"?:
-            graphData = resp
+          
+            graphData = self.averages
+            print(graphData)
+            chtChart.leftAxis.axisMaximum = 2
+            chtChart.rightAxis.axisMaximum = 2
+            chtChart.leftAxis.axisMinimum = -1
+            chtChart.rightAxis.axisMinimum = -1
         case "Oxygen"?:
-            graphData = oxy
+      
+            graphData = self.averages
+            print(graphData)
+            chtChart.leftAxis.axisMaximum = 110
+            chtChart.rightAxis.axisMaximum = 110
+            chtChart.leftAxis.axisMinimum = 90
+            chtChart.rightAxis.axisMinimum = 90
         case "Systolic"?:
-            graphData = SB
+           
+            graphData = self.averages
+            print(graphData)
+            chtChart.leftAxis.axisMaximum = 150
+            chtChart.rightAxis.axisMaximum = 150
+            chtChart.leftAxis.axisMinimum = 80
+            chtChart.rightAxis.axisMinimum = 80
         default:
-            graphData = HR
+           
+            graphData = self.averages
+            print(graphData)
+            chtChart.leftAxis.axisMaximum = 100
+            chtChart.rightAxis.axisMaximum = 100
+            chtChart.leftAxis.axisMinimum = -100
+            chtChart.rightAxis.axisMinimum = -100
         }
         
           for i in 0..<graphData.count {
@@ -216,8 +272,9 @@ class VitalViewController: UIViewController {
               lineChartEntry.append(value) // here we add it to the data set
           }
         var line1 = LineChartDataSet(values: lineChartEntry, label: "Number") //Here we convert lineChartEntry to a LineChartDataSet
-        
-        line1.drawCirclesEnabled = false
+        if vitalDict[id] == "ECG" {
+            line1.drawCirclesEnabled = false
+        }
         line1.drawValuesEnabled = false
         
         line1.colors = [NSUIColor.blue] //Sets the colour to blue
@@ -228,10 +285,7 @@ class VitalViewController: UIViewController {
         
         
         chtChart.data = data //finally - it adds the chart data to the chart and causes an update
-        chtChart.leftAxis.axisMaximum = 500
-        chtChart.rightAxis.axisMaximum = 500
-        chtChart.leftAxis.axisMinimum = -500
-        chtChart.rightAxis.axisMinimum = -500
+
         
         //chtChart.chartDescription?.text = "My awesome chart" // Here we set the description for the graph
     }
@@ -264,60 +318,70 @@ class VitalViewController: UIViewController {
             for num in data_arr {
                 new_numbers.append(num as! Int)
             }
-            HR.append(Double(new_numbers[0]))
+            //HR.append(Double(new_numbers[0]))
             //ecgBuffer.append(Double(new_numbers[1]))
-            readBuffer.append(Double(new_numbers[1]))
-            temp.append(Double(new_numbers[2]))
-            DB.append(Double(new_numbers[3]))
-            pleth.append(Double(new_numbers[4]))
-            resp.append(Double(new_numbers[5]))
-            oxy.append(Double(new_numbers[6]))
-            SB.append(Double(new_numbers[7]))
-        
+        print(Int(id)!)
+        readBuffer.append(Double(new_numbers[Int(id)!]))
+//            temp.append(Double(new_numbers[2]))
+//            DB.append(Double(new_numbers[3]))
+//            pleth.append(Double(new_numbers[4]))
+//            resp.append(Double(new_numbers[5]))
+//            oxy.append(Double(new_numbers[6]))
+//            SB.append(Double(new_numbers[7]))
         
 
-        if readBuffer.count == 128 {
-            ecgBuffer = dsp.highPassFilter(input: readBuffer, cutoff: 7.5)
-            
-            ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
-            ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
-            ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
-            print(ecgBuffer.count)
-            ecgBuffer = ecgBuffer.filter {abs($0) > 2  }
-            //let ecgBuf: ArraySlice<Double> = ecgBuffer[82..<244]
-            print(ecgBuffer.count)
-            let bufslice: ArraySlice<Double> = ecgBuffer[(ecgBuffer.count - 2)..<(ecgBuffer.count)]
-            masterPoints = masterPoints + Array(bufslice)
-            ECG = ECG + ecgBuffer
-            ecgBuffer = []
-            //readBuffer.remove(at: 0)
-            for _ in 0...2 {
-                readBuffer.remove(at: 0)
+        switch vitalDict[id] {
+        case "ECG"?:
+            if self.gettingPoints {
+                DispatchQueue.main.async {
+                    self.connectBar.setProgress(Float(Double(self.readBuffer.count) / 128), animated: true)
+                }
             }
-        }
-  
-//        if ecgBuffer.count == 128 {
-//            ecgBuffer = dsp.highPassFilter(input: ecgBuffer, cutoff: 7.5)
-//
-//            ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
-//            ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
-//            ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
-//            ecgBuffer = ecgBuffer.filter {abs($0) > 2  }
-//            ECG = ECG + ecgBuffer
-//            ecgBuffer = []
-//        }
-//
-        while ECG.count > 128 {
-            ECG.remove(at: 0)
-        }
-        if masterPoints.count >= 384 {
-            self.streamFlag = false
-            guard let socket = self.socket else { return }
-            socket.close()
-            DispatchQueue.main.async {
-            self.appendToTextField(string: "Finished reading data!")
+            if readBuffer.count == 128 {
+                self.gettingPoints = false
+    //            DispatchQueue.main.async {
+    //                self.connectBar.setProgress(1, animated: true)
+    //            }
+                ecgBuffer = dsp.highPassFilter(input: readBuffer, cutoff: 7.5)
+                
+                ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+                ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+                ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+                print(ecgBuffer.count)
+                ecgBuffer = ecgBuffer.filter {abs($0) > 2  }
+                //let ecgBuf: ArraySlice<Double> = ecgBuffer[82..<244]
+                print(ecgBuffer.count)
+                let bufslice: ArraySlice<Double> = ecgBuffer[(ecgBuffer.count - 2)..<(ecgBuffer.count)]
+                masterPoints = masterPoints + Array(bufslice)
+                ECG = ECG + ecgBuffer
+                ecgBuffer = []
+                //readBuffer.remove(at: 0)
+                for _ in 0...2 {
+                    readBuffer.remove(at: 0)
+                }
             }
-            let db = Firestore.firestore()
+    //        if ecgBuffer.count == 128 {
+    //            ecgBuffer = dsp.highPassFilter(input: ecgBuffer, cutoff: 7.5)
+    //
+    //            ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+    //            ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+    //            ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+    //            ecgBuffer = ecgBuffer.filter {abs($0) > 2  }
+    //            ECG = ECG + ecgBuffer
+    //            ecgBuffer = []
+    //        }
+    //
+            while ECG.count > 128 {
+                ECG.remove(at: 0)
+            }
+            if masterPoints.count >= 384 {
+                self.streamFlag = false
+                guard let socket = self.socket else { return }
+                socket.close()
+                DispatchQueue.main.async {
+                    self.appendToTextField(string: "Finished reading data!")
+                }
+                let db = Firestore.firestore()
                 db.collection("vitals").addDocument(data:
                     ["type": self.vitalDict[self.id],
                      "data": self.masterPoints,
@@ -328,15 +392,65 @@ class VitalViewController: UIViewController {
                         } else {
                             print("Document added successfully")
                         }
-                
-
+                        
+                        
                 }
-        }
+            }
+        default:
+            if self.gettingPoints {
+                DispatchQueue.main.async {
+                    self.connectBar.setProgress(Float(Double(self.readBuffer.count) / 384), animated: true)
+                }
+            }
+            if readBuffer.count >= 384 {
+                print(readBuffer)
+                self.gettingPoints = false
+                self.streamFlag = false
+                guard let socket = self.socket else { return }
+                socket.close()
+                let (scaleMin, scaleMax) = scaleDict[id]!
+                let min = readBuffer.min()
+                let max = readBuffer.max()
+                var total = 0.0
+                var average = 0.0
+                if Int(id) != 2 {
+                    masterPoints = readBuffer.map { (($0 - min!) / (max!-min!)) }
+                    masterPoints = masterPoints.map { $0 * (scaleMax - scaleMin) + scaleMin }
+                    total = masterPoints.reduce (0, {$0 + $1})
+                    average = total / Double(masterPoints.count)
+                } else {
+                    total = readBuffer.reduce(0, {$0 + $1})
+                    average = total / Double(readBuffer.count)
+                }
+                print(average)
+                DispatchQueue.main.async {
+                    self.appendToTextField(string: "Finished reading data!")
+                    self.averageLabelView.text = self.averageLabelView.text! + " " + String(average)
+                }
+                let db = Firestore.firestore()
+                db.collection("vitals").addDocument(data:
+                    ["type": self.vitalDict[self.id],
+                     "data": self.masterPoints,
+                     "senderId": user,
+                     "date": Date(),
+                     "average": average]) { err in
+                        if let err = err {
+                            print("Error adding document: \(err)")
+                        } else {
+                            print("Document added successfully")
+                        }
+                        
+                        
+                }
+            }
+            
+        
         
         
         
 
         
+    }
     }
 
 }
