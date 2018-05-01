@@ -646,23 +646,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-heart-monitor-64" translatesAutoresizingMaskIntoConstraints="NO" id="Skz-hj-qvl">
-                                <rect key="frame" x="151" y="95" width="64" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Nw-b2-BAe">
-                                <rect key="frame" x="127" y="314" width="71" height="17"/>
+                                <rect key="frame" x="34" y="307" width="307" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EvJ-NL-fpd">
-                                <rect key="frame" x="129" y="348" width="67" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <connections>
+                                    <action selector="emptyUser:" destination="PIz-Cz-A5F" eventType="editingDidEnd" id="AJP-Ga-Sno"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blockchain-Medical" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uht-9O-GaT">
                                 <rect key="frame" x="68" y="227" width="231" height="33"/>
@@ -687,6 +679,24 @@
                                     <action selector="loginAction" destination="PIz-Cz-A5F" eventType="touchUpInside" id="UbN-78-RZd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlC-5n-71o">
+                                <rect key="frame" x="34" y="376" width="307" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.011367673219544017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EvJ-NL-fpd">
+                                <rect key="frame" x="32" y="351" width="307" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blue-cross-clip-art-blue-cross-1" translatesAutoresizingMaskIntoConstraints="NO" id="2OS-UP-YMI">
+                                <rect key="frame" x="119" y="64" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.24123018979999999" green="0.5741075873" blue="0.80075424910000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -696,7 +706,9 @@
                         <viewLayoutGuide key="safeArea" id="yku-zt-iFs"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="FlC-5n-71o" id="53h-7T-SiZ"/>
                         <outlet property="login" destination="hfp-9D-deK" id="VcB-QF-BXp"/>
+                        <outlet property="logo" destination="2OS-UP-YMI" id="PJC-fF-1Dh"/>
                         <outlet property="passwordView" destination="EvJ-NL-fpd" id="S8A-Gl-lf6"/>
                         <outlet property="usernameView" destination="4Nw-b2-BAe" id="4L0-Ds-EEN"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="goToHome" id="HT7-mL-heo"/>
@@ -919,9 +931,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="blue-cross-clip-art-blue-cross-1" width="600" height="600"/>
         <image name="comms" width="36" height="36"/>
         <image name="heart2" width="36" height="36"/>
-        <image name="icons8-heart-monitor-64" width="64" height="64"/>
         <image name="icons8-settings-32" width="32" height="32"/>
         <image name="schedule" width="32" height="32"/>
     </resources>
