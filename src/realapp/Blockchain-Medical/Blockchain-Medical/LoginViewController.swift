@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordView: UITextField!
     @IBOutlet weak var login: RoundButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var logo: UIImageView!
     //var iserror: Bool = false
     var errorString: String = ""
     
@@ -45,9 +46,8 @@ class LoginViewController: UIViewController {
         login.center = CGPoint(x: self.view.center.x, y: self.view.center.y * 1.6)
         errorLabel.text = "Login username or password incorrect"
         errorLabel.center = CGPoint(x: self.view.center.x, y: self.view.center.y * 1.45)
-        //if (usernameView.text == "") && (passwordView.text == "") {
-            self.errorLabel.isHidden = true
-        //}
+        self.errorLabel.isHidden = true
+        logo.center = CGPoint(x: self.view.center.x, y: self.view.center.y * 1/2)
     }
 
     @IBAction func loginAction() {

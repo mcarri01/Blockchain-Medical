@@ -698,6 +698,7 @@
                     <connections>
                         <outlet property="errorLabel" destination="FlC-5n-71o" id="53h-7T-SiZ"/>
                         <outlet property="login" destination="hfp-9D-deK" id="VcB-QF-BXp"/>
+                        <outlet property="logo" destination="2OS-UP-YMI" id="PJC-fF-1Dh"/>
                         <outlet property="passwordView" destination="EvJ-NL-fpd" id="S8A-Gl-lf6"/>
                         <outlet property="usernameView" destination="4Nw-b2-BAe" id="4L0-Ds-EEN"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="goToHome" id="HT7-mL-heo"/>
