@@ -15,44 +15,46 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameView: UITextField!
     @IBOutlet weak var passwordView: UITextField!
     @IBOutlet weak var login: RoundButton!
+    @IBOutlet weak var errorLabel: UILabel!
+    //var iserror: Bool = false
+    var errorString: String = ""
+    
     override func viewDidLoad() {
         var linesize: CGFloat
+        var offset: CGFloat
         if UIDevice.current.userInterfaceIdiom == .pad {
             linesize = 1/3
+            offset = 1.1
         }else{
             linesize = 1/2
+            offset = 1.3
         }
         super.viewDidLoad()
-        usernameView.center = CGPoint(x: self.view.center.x * 3/4, y: self.view.center.y * 1.25)
+        usernameView.center = CGPoint(x: self.view.center.x * offset, y: self.view.center.y * 1.25)
         let bottomLine1 = CALayer()
         bottomLine1.frame = CGRect(x: 0.0, y: 20, width: UIScreen.main.bounds.width * linesize, height: 1.0)
         bottomLine1.backgroundColor = UIColor.white.cgColor
         usernameView.borderStyle = UITextBorderStyle.none
         usernameView.layer.addSublayer(bottomLine1)
-        passwordView.center = CGPoint(x: self.view.center.x * 3/4, y: self.view.center.y * 1.35)
+        passwordView.center = CGPoint(x: self.view.center.x * offset, y: self.view.center.y * 1.35)
         let bottomLine2 = CALayer()
         bottomLine2.frame = CGRect(x: 0.0, y: 20, width: UIScreen.main.bounds.width * linesize, height: 1.0)
         bottomLine2.backgroundColor = UIColor.white.cgColor
         passwordView.borderStyle = UITextBorderStyle.none
         passwordView.layer.addSublayer(bottomLine2)
         login.center = CGPoint(x: self.view.center.x, y: self.view.center.y * 1.6)
-        //login.cornerRadius = login.frame.size.width * 1/2 
-        //let border = CALayer()
-        //let width = CGFloat(2.0)
-        
-        //border.borderColor  = UIColor.darkGray.cgColor
-        //border.frame = CGRect(x: 0, y: usernameView.frame.size.height - width, width: usernameView.frame.size.width, height: usernameView.frame.size.height)
-        
-        //border.borderWidth = width
-        //usernameView.layer.addSublayer(border)
-        //passwordView.layer.addSublayer(border)
-        // Do any additional setup after loading the view.
+        errorLabel.text = "Login username or password incorrect"
+        errorLabel.center = CGPoint(x: self.view.center.x, y: self.view.center.y * 1.45)
+        //if (usernameView.text == "") && (passwordView.text == "") {
+            self.errorLabel.isHidden = true
+        //}
     }
 
     @IBAction func loginAction() {
         if let email = usernameView.text, let pass = passwordView.text {
             Auth.auth().signIn(withEmail: email, password: pass, completion: {(currUser, error) in
                 if let u = currUser {
+                    //self.errorLabel.isHidden = true
                     print(u)
                     let db = Firestore.firestore()
                     db.collection("users").document(u.uid).getDocument {
@@ -64,17 +66,29 @@ class LoginViewController: UIViewController {
                            self.performSegue(withIdentifier: "goToHome", sender: nil)
                         }
                     }
+                    
                 }
                 else {
+                    self.errorLabel.isHidden = false
+                    //self.iserror = true;
+                    self.errorString = self.usernameView.text!
                     print("No user")
                     return
                 }
                 })
                 
         }
+
 //       let appDelegateTemp = UIApplication.shared.delegate as? AppDelegate
 //        appDelegateTemp?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
     }
+    
+    @IBAction func emptyUser(_ sender: Any) {
+        if usernameView.text != errorString {
+            self.errorLabel.isHidden = true
+        }
+    }
+
     
  
     override func didReceiveMemoryWarning() {
