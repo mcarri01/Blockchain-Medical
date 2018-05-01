@@ -15,7 +15,8 @@ import Firestore
 
 class VitalViewController: UIViewController {
 
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var labelView: UILabel!
+    //@IBOutlet weak var textView: UITextView!
     @IBOutlet weak var chtChart: LineChartView!
     var numbers : [Double] = [  ]
     @IBOutlet weak var connectBar: UIProgressView!
@@ -137,7 +138,7 @@ class VitalViewController: UIViewController {
     }
     
     private func appendToTextField(string: String) {
-        textView.text = string
+        labelView.text = string
     }
     
     private func streamData() {
@@ -154,6 +155,24 @@ class VitalViewController: UIViewController {
               //  }
             }
         }
+    }
+    
+    func grabAverages(type: String) -> [Double] {
+        var averages: [Double] = []
+        let db = Firestore.firestore()
+        _ = db.collection("vitals").whereField("type", isEqualTo: type).whereField("senderId", isEqualTo: user).getDocuments {
+            (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching documents: \(String(describing: error))")
+                return
+            }
+            for document in documents {
+                let data = document.data()
+                averages.append(data["average"] as! Double)
+            }
+        }
+        while (averages.count == 0) {}
+        return averages
     }
     
     func updateGraph(){
@@ -263,8 +282,11 @@ class VitalViewController: UIViewController {
             ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
             ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
             ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+            print(ecgBuffer.count)
             ecgBuffer = ecgBuffer.filter {abs($0) > 2  }
-            let bufslice: ArraySlice<Double> = ecgBuffer[124..<128]
+            //let ecgBuf: ArraySlice<Double> = ecgBuffer[82..<244]
+            print(ecgBuffer.count)
+            let bufslice: ArraySlice<Double> = ecgBuffer[(ecgBuffer.count - 2)..<(ecgBuffer.count)]
             masterPoints = masterPoints + Array(bufslice)
             ECG = ECG + ecgBuffer
             ecgBuffer = []

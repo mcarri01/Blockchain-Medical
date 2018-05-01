@@ -364,15 +364,6 @@
                                 <rect key="frame" x="16" y="59" width="343" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OSR-OM-K00">
-                                <rect key="frame" x="57" y="366" width="260" height="52"/>
-                                <color key="backgroundColor" red="0.32941176470588235" green="0.77647058823529413" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="lO4-Aq-F6S"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wRc-Sh-ygz">
                                 <rect key="frame" x="115" y="429" width="145" height="2"/>
                             </progressView>
@@ -387,30 +378,41 @@
                                     <action selector="readButtonAction" destination="Iui-ft-tp7" eventType="touchUpInside" id="btL-xp-VNW"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Za4-3B-caB">
+                                <rect key="frame" x="166" y="375" width="18" height="21"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moM-6P-tfG">
+                                <rect key="frame" x="136" y="375" width="103" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.3294117647" green="0.77647058820000003" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="wRc-Sh-ygz" firstAttribute="top" secondItem="Za4-3B-caB" secondAttribute="bottom" constant="33" id="1Tp-o5-NyB"/>
                             <constraint firstItem="SZh-tS-pSi" firstAttribute="centerX" secondItem="8VA-US-W0w" secondAttribute="centerX" id="Dpj-av-vPc"/>
                             <constraint firstItem="SZh-tS-pSi" firstAttribute="top" secondItem="16b-OJ-gJ8" secondAttribute="top" constant="39" id="K4z-64-hwg"/>
-                            <constraint firstItem="wRc-Sh-ygz" firstAttribute="top" secondItem="OSR-OM-K00" secondAttribute="bottom" constant="11" id="LKP-4X-JtA"/>
-                            <constraint firstItem="OSR-OM-K00" firstAttribute="leading" secondItem="16b-OJ-gJ8" secondAttribute="leading" constant="57" id="Mip-sn-ifd"/>
+                            <constraint firstItem="Za4-3B-caB" firstAttribute="top" secondItem="SZh-tS-pSi" secondAttribute="bottom" constant="36" id="K84-W8-7vB"/>
                             <constraint firstAttribute="bottom" secondItem="hTK-HD-YSF" secondAttribute="bottom" constant="160" id="QJq-Ao-YbA"/>
-                            <constraint firstItem="hTK-HD-YSF" firstAttribute="top" secondItem="OSR-OM-K00" secondAttribute="bottom" constant="49" id="TEA-uf-opc"/>
                             <constraint firstItem="wRc-Sh-ygz" firstAttribute="centerX" secondItem="hTK-HD-YSF" secondAttribute="centerX" id="TcA-h2-be7"/>
                             <constraint firstAttribute="bottom" secondItem="SZh-tS-pSi" secondAttribute="bottom" constant="328" id="UnB-2o-atU"/>
                             <constraint firstItem="SZh-tS-pSi" firstAttribute="leading" secondItem="8VA-US-W0w" secondAttribute="leadingMargin" id="YvI-DV-i2I"/>
-                            <constraint firstItem="OSR-OM-K00" firstAttribute="centerX" secondItem="8VA-US-W0w" secondAttribute="centerX" id="al1-RH-qcO"/>
+                            <constraint firstItem="Za4-3B-caB" firstAttribute="leading" secondItem="16b-OJ-gJ8" secondAttribute="leading" constant="166" id="j22-BC-u43"/>
+                            <constraint firstItem="moM-6P-tfG" firstAttribute="centerX" secondItem="wRc-Sh-ygz" secondAttribute="centerX" id="jw5-RE-e9q"/>
+                            <constraint firstItem="moM-6P-tfG" firstAttribute="bottom" secondItem="Za4-3B-caB" secondAttribute="bottom" id="uDm-c6-oWn"/>
                             <constraint firstItem="wRc-Sh-ygz" firstAttribute="leading" secondItem="8VA-US-W0w" secondAttribute="leadingMargin" constant="99" id="wK1-SJ-f1w"/>
                             <constraint firstItem="hTK-HD-YSF" firstAttribute="centerX" secondItem="8VA-US-W0w" secondAttribute="centerX" id="ybE-HK-0vT"/>
+                            <constraint firstItem="moM-6P-tfG" firstAttribute="top" secondItem="Za4-3B-caB" secondAttribute="top" id="z7M-jW-nTK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="16b-OJ-gJ8"/>
                     </view>
                     <connections>
                         <outlet property="chtChart" destination="SZh-tS-pSi" id="U7w-yX-eQc"/>
                         <outlet property="connectBar" destination="wRc-Sh-ygz" id="H9I-dj-Ybg"/>
+                        <outlet property="labelView" destination="moM-6P-tfG" id="kyv-KK-JFq"/>
                         <outlet property="readButton" destination="hTK-HD-YSF" id="VDs-dg-neo"/>
-                        <outlet property="textView" destination="OSR-OM-K00" id="Lwg-Jc-WA8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDk-c9-BM3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -917,6 +919,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Kuq-Ao-lAc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oom-IY-r35" userLabel="First Responder" sceneMemberID="firstResponder"/>
