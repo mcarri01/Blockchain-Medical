@@ -14,20 +14,29 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameView: UITextField!
     @IBOutlet weak var passwordView: UITextField!
+    @IBOutlet weak var login: RoundButton!
     override func viewDidLoad() {
+        var linesize: CGFloat
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            linesize = 1/3
+        }else{
+            linesize = 1/2
+        }
         super.viewDidLoad()
-        usernameView.center = CGPoint(x: self.view.center.x, y: self.view.center.y * 1.25)
+        usernameView.center = CGPoint(x: self.view.center.x * 3/4, y: self.view.center.y * 1.25)
         let bottomLine1 = CALayer()
-        bottomLine1.frame = CGRect(x: 0.0, y: 30, width: UIScreen.main.bounds.width * 1/2, height: 1.0)
+        bottomLine1.frame = CGRect(x: 0.0, y: 20, width: UIScreen.main.bounds.width * linesize, height: 1.0)
         bottomLine1.backgroundColor = UIColor.white.cgColor
         usernameView.borderStyle = UITextBorderStyle.none
         usernameView.layer.addSublayer(bottomLine1)
         passwordView.center = CGPoint(x: self.view.center.x * 3/4, y: self.view.center.y * 1.35)
         let bottomLine2 = CALayer()
-        bottomLine2.frame = CGRect(x: 0.0, y: 30, width: UIScreen.main.bounds.width * 1/2, height: 1.0)
+        bottomLine2.frame = CGRect(x: 0.0, y: 20, width: UIScreen.main.bounds.width * linesize, height: 1.0)
         bottomLine2.backgroundColor = UIColor.white.cgColor
         passwordView.borderStyle = UITextBorderStyle.none
         passwordView.layer.addSublayer(bottomLine2)
+        login.center = CGPoint(x: self.view.center.x, y: self.view.center.y * 1.6)
+        //login.cornerRadius = login.frame.size.width * 1/2 
         //let border = CALayer()
         //let width = CGFloat(2.0)
         

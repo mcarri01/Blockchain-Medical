@@ -29,7 +29,7 @@ class FourthViewController: UIViewController{
         Button5.frame.size = getSizeForButton()
         Button5.setTitle("42", for: [])
         Button5.titleLabel?.font = UIFont.systemFont(ofSize: Button5.frame.size.width/160 * 70.0)
-        Button5.frame.size = getSizeForButton()
+        //Button5.frame.size = getSizeForButton()
         Button5.borderWidth = 7
         Button5.cornerRadius = Button5.frame.size.width / 2.0
         Button5.center = CGPoint(x: self.view.center.x / 2.0, y: self.view.center.y * 2/3)
