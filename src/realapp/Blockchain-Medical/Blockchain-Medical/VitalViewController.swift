@@ -26,7 +26,8 @@ class VitalViewController: UIViewController {
     
     @IBOutlet weak var readButton: UIButton!
     
-    
+    var start = Date()
+    var end = Date()
     var HR : [Double] = [  ]
     var ECG : [Double] = [  ]
     var temp : [Double] = [  ]
@@ -42,6 +43,9 @@ class VitalViewController: UIViewController {
     var masterPoints: [Double] = []
     var averages: [Double] = []
     var averageSet = false
+    
+    var foundPeak = false
+    var peakCount = 0
     
     var dsp = DSP()
     
@@ -150,6 +154,7 @@ class VitalViewController: UIViewController {
     }
     
     private func streamData() {
+        self.start = Date()
         while streamFlag {
             //if streamFlag {
                 let count = readHeader()
@@ -159,8 +164,9 @@ class VitalViewController: UIViewController {
                 readData(count: count)
             
                 DispatchQueue.main.async {
-                    self.appendToTextField(string: "Reading data...")
+                    //self.appendToTextField(string: "Reading data...")
                     self.updateGraph()
+                    //self.appendToTextField(string: "Reading data...")
               //  }
             }
         }
@@ -322,6 +328,7 @@ class VitalViewController: UIViewController {
             //ecgBuffer.append(Double(new_numbers[1]))
         print(Int(id)!)
         readBuffer.append(Double(new_numbers[Int(id)!]))
+        masterPoints.append(Double(new_numbers[Int(id)!]))
 //            temp.append(Double(new_numbers[2]))
 //            DB.append(Double(new_numbers[3]))
 //            pleth.append(Double(new_numbers[4]))
@@ -352,7 +359,7 @@ class VitalViewController: UIViewController {
                 //let ecgBuf: ArraySlice<Double> = ecgBuffer[82..<244]
                 print(ecgBuffer.count)
                 let bufslice: ArraySlice<Double> = ecgBuffer[(ecgBuffer.count - 2)..<(ecgBuffer.count)]
-                masterPoints = masterPoints + Array(bufslice)
+                //masterPoints = masterPoints + Array(bufslice)
                 ECG = ECG + ecgBuffer
                 ecgBuffer = []
                 //readBuffer.remove(at: 0)
@@ -375,18 +382,65 @@ class VitalViewController: UIViewController {
                 ECG.remove(at: 0)
             }
             if masterPoints.count >= 384 {
+                ecgBuffer = dsp.highPassFilter(input: masterPoints, cutoff: 7.5)
+                
+                ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+                ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+                ecgBuffer = dsp.lowPassFilter(input: ecgBuffer, cutoff: 25.0)
+                
+                
+                self.end = Date()
+                var ecgSlice: ArraySlice<Double>
+                for i in 11...(ecgBuffer.count-40) {
+//                    if i+10 > ecgBuffer.count - 1{
+//                        ecgSlice = ecgBuffer[(i-10)..<ecgBuffer.count]
+//                    } else {
+//                    if i > 10 && i < (ecgBuffer.count - 30) {
+                        ecgSlice = ecgBuffer[(i-11)..<(i+11)]
+                        if Array(ecgSlice).max() == ecgBuffer[i] {
+                            peakCount += 1
+                        }
+//                    }
+                    
+                    
+                    
+                    
+//                    print(point)
+//                    if point > 150 && !foundPeak {
+//                        peakCount += 1
+//                        foundPeak = true
+//                    }
+//                    if point < 150 && foundPeak {
+//                        foundPeak = false
+//                    }
+                }
+                print("break hereeeeeeeeeeeeeeeeeeEE")
+                print(ECG)
+                let total = Calendar.current.dateComponents([.second], from: self.start, to: self.end)
+                
+                print(self.start)
+                print(self.end)
+                
+                print(total.second!)
+                let time = Double(total.second!) / 60.0
+                print("Time: \(time)")
                 self.streamFlag = false
                 guard let socket = self.socket else { return }
                 socket.close()
                 DispatchQueue.main.async {
                     self.appendToTextField(string: "Finished reading data!")
                 }
+                
                 let db = Firestore.firestore()
+                let heartRate = (Double(peakCount) / time)
+                print(peakCount)
+                print(heartRate)
                 db.collection("vitals").addDocument(data:
                     ["type": self.vitalDict[self.id],
-                     "data": self.masterPoints,
+                     "data": self.ecgBuffer,
                      "senderId": user,
-                     "date": Date()]) { err in
+                     "date": Date(),
+                     "average": heartRate]) { err in
                         if let err = err {
                             print("Error adding document: \(err)")
                         } else {
@@ -403,6 +457,7 @@ class VitalViewController: UIViewController {
                 }
             }
             if readBuffer.count >= 384 {
+                self.end = Date()
                 print(readBuffer)
                 self.gettingPoints = false
                 self.streamFlag = false
