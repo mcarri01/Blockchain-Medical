@@ -65,8 +65,9 @@ class LoginViewController: UIViewController {
                            user = u.uid
                            self.performSegue(withIdentifier: "goToHome", sender: nil)
                         }
+                        userName = document?.data()["name"] as! String
+                        print(userName)
                     }
-                    
                 }
                 else {
                     self.errorLabel.isHidden = false
