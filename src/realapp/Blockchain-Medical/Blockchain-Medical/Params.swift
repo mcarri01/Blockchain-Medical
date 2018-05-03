@@ -13,3 +13,5 @@ var userName = ""
 var isClinician = false
 var receiver = ""
 var receiverName = ""
+var perm = true
+

@@ -123,10 +123,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             checked = true
             cell?.accessoryType = .checkmark
         }
-        /*let patientData: [String: Any] = []
+        permissions[indexPath.row].permission = checked
+        let patientData: [String: Any] = [
+            "name": userName,
+            "type": "patient",
+            "clinicians": clinicians.map{$0.1},
+            "permissions": permissions.map{[$0.clinician : $0.permission]}]
         let db = Firestore.firestore()
-        _ = db.collection("users").document(user).setData(
-            ["permissions":[])*/
+        _ = db.collection("users").document(user).setData(patientData)
     }
     
     override func didReceiveMemoryWarning() {

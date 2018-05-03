@@ -37,6 +37,7 @@ class PatientTableViewController: UITableViewController{
                         }
                     }
                 }
+                
             }
             else {
                 print("Error fetching documents: \(String(describing: error))")
@@ -79,18 +80,64 @@ class PatientTableViewController: UITableViewController{
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        performSegue(withIdentifier: "goToHome", sender: cell)
+        
+        user = patients.filter{ $0.0 == cell?.textLabel?.text as! String }[0].id
+        userName = cell?.textLabel?.text as! String
+        //print(user)
+        isClinician = true
+        receiver = user
+        
+        performSegue(withIdentifier: "goToHome", sender: nil)
     }
     
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        user = patients.filter{ $0.0 == cell.textLabel?.text as! String }[0].id
-        userName = cell.textLabel?.text as! String
-        print(user)
-        isClinician = true
-        receiver = user
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let cell = sender as! UITableViewCell
+//        user = patients.filter{ $0.0 == cell.textLabel?.text as! String }[0].id
+//        userName = cell.textLabel?.text as! String
+//        //print(user)
+//        isClinician = true
+//        receiver = user
+//        let db = Firestore.firestore()
+//        _ = db.collection("users").document(user).getDocument { (document, error) in
+//            if let document = document, document.exists {
+//                let p =  document.data()["permissions"] as! NSArray
+//                //print(p)
+//                for entry in p {
+//                    let e  = entry as! [String:Bool]
+//                    for (key, val) in e {
+//                        self.permissions.append((clinician: key, permission: val))
+//                    }
+//                }
+//                perm = self.permissions.filter { $0.0 == Auth.auth().currentUser?.uid }[0].permission
+//                print(perm)
+//
+//            }
+//        }
+//
+//
+//
+//    }
     
 }
+//
+//db.collection("users").document(user).getDocument {
+//    (document, error) in
+//    if let document = document, document.exists {
+//        let type = document.data()["type"] as! String
+//        let list = document.data()[self.typeSwap[type]!] as! NSArray
+//        for elem in list {
+//            db.collection("users").document(elem as! String).getDocument { (doc, error) in
+//                if let doc = doc, document.exists {
+//                    let data = doc.data()
+//                    self.members.append((name: data["name"] as! String, id: elem as! String))
+//                    self.memberTable.reloadData()
+//                }
+//                else {
+//                    print("Error fetching documents: \(String(describing: error))")
+//                    return
+//                }
+//            }
+//        }
+//}
 
