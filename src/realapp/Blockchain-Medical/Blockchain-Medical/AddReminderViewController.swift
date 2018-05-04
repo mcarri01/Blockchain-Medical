@@ -26,7 +26,7 @@ class AddReminderViewController: UIViewController {
         db.collection("reminders").addDocument(data:
         ["title": input.text,
          "notes": notes.text,
-         "date": datePicker.date - 4 *  3600,
+         "date": datePicker.date,
          "userID": user]) { err in
             if let err = err {
                 print("Error adding document: \(err)")

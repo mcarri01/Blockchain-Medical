@@ -389,6 +389,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzV-Z3-Hb3">
+                                <rect key="frame" x="244" y="562" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.3294117647" green="0.77647058820000003" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -415,6 +422,7 @@
                     </view>
                     <connections>
                         <outlet property="averageLabelView" destination="NKE-ga-AkZ" id="wtU-df-tVp"/>
+                        <outlet property="avg" destination="kzV-Z3-Hb3" id="InX-Cc-TYO"/>
                         <outlet property="chtChart" destination="SZh-tS-pSi" id="U7w-yX-eQc"/>
                         <outlet property="connectBar" destination="wRc-Sh-ygz" id="H9I-dj-Ybg"/>
                         <outlet property="labelView" destination="moM-6P-tfG" id="kyv-KK-JFq"/>
@@ -872,6 +880,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MW6-U6-omf" firstAttribute="bottom" secondItem="0YT-cp-Flo" secondAttribute="bottomMargin" id="EZK-bZ-O11"/>
+                                                <constraint firstItem="MW6-U6-omf" firstAttribute="top" secondItem="0YT-cp-Flo" secondAttribute="topMargin" constant="-25" id="YPg-UK-W8f"/>
                                                 <constraint firstItem="MW6-U6-omf" firstAttribute="leading" secondItem="0YT-cp-Flo" secondAttribute="leadingMargin" constant="-1" id="llJ-aj-29F"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -887,13 +896,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAm-wo-Mlb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAm-wo-Mlb">
                                 <rect key="frame" x="16" y="482" width="343" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="8u3-lo-ZYS"/>
+                                </constraints>
                                 <state key="normal" title="Change Patient">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="vII-ZE-1lX" kind="show" id="0Q0-MA-HrP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.3294117647" green="0.77647058820000003" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -908,9 +922,12 @@
                             <constraint firstItem="KeZ-oa-ved" firstAttribute="leading" secondItem="tKQ-pm-kc1" secondAttribute="leadingMargin" id="ec6-3y-4oz"/>
                             <constraint firstItem="KeZ-oa-ved" firstAttribute="trailing" secondItem="tKQ-pm-kc1" secondAttribute="trailingMargin" id="fuG-io-t5D"/>
                             <constraint firstItem="nj2-lm-ynh" firstAttribute="trailing" secondItem="R1A-Ry-33K" secondAttribute="trailing" id="hc8-CZ-WLk"/>
+                            <constraint firstItem="zAm-wo-Mlb" firstAttribute="trailing" secondItem="gyJ-Cp-GxY" secondAttribute="trailing" id="jsQ-Xx-X5P"/>
+                            <constraint firstItem="gyJ-Cp-GxY" firstAttribute="top" secondItem="zAm-wo-Mlb" secondAttribute="bottom" constant="8" symbolic="YES" id="jzf-GS-KiU"/>
                             <constraint firstItem="nj2-lm-ynh" firstAttribute="top" secondItem="KeZ-oa-ved" secondAttribute="bottom" constant="25" id="k5K-1n-7Tq"/>
                             <constraint firstItem="avE-OJ-q4a" firstAttribute="bottom" secondItem="gyJ-Cp-GxY" secondAttribute="bottom" constant="52" id="qIN-8C-VDl"/>
                             <constraint firstItem="KeZ-oa-ved" firstAttribute="leading" secondItem="nj2-lm-ynh" secondAttribute="leading" id="x1X-hS-d5P"/>
+                            <constraint firstItem="zAm-wo-Mlb" firstAttribute="leading" secondItem="gyJ-Cp-GxY" secondAttribute="leading" id="yT4-We-pds"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="avE-OJ-q4a"/>
                     </view>
@@ -918,6 +935,7 @@
                     <connections>
                         <outlet property="name" destination="KeZ-oa-ved" id="1wo-v7-ZVs"/>
                         <outlet property="settingTable" destination="R1A-Ry-33K" id="WC4-9X-g3g"/>
+                        <outlet property="switchPatient" destination="zAm-wo-Mlb" id="TP4-Vy-v1w"/>
                         <outlet property="tableTitle" destination="nj2-lm-ynh" id="K2k-5o-GEV"/>
                         <segue destination="PIz-Cz-A5F" kind="show" identifier="logout" id="1he-eX-gJ2"/>
                     </connections>
@@ -1010,6 +1028,7 @@
         <segue reference="ggA-er-2TH"/>
         <segue reference="WnA-iz-QcD"/>
         <segue reference="Te6-jW-FRU"/>
+        <segue reference="0Q0-MA-HrP"/>
         <segue reference="0RI-Dq-OI4"/>
         <segue reference="E9v-ag-BzI"/>
     </inferredMetricsTieBreakers>

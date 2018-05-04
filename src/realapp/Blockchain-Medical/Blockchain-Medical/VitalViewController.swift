@@ -22,6 +22,7 @@ class VitalViewController: UIViewController {
     var numbers : [Double] = [  ]
     var gettingPoints = true
     @IBOutlet weak var connectBar: UIProgressView!
+    @IBOutlet weak var avg: UILabel!
     
     
     @IBOutlet weak var readButton: UIButton!

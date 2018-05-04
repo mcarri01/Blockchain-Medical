@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableTitle: UILabel!
     @IBOutlet weak var settingTable: UITableView!
     @IBOutlet weak var slider: UISwitch!
+    @IBOutlet weak var switchPatient: UIButton!
     
     var permissions: [(clinician: String, permission : Bool)] = []
     
@@ -82,6 +83,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             tableTitle.text = "Clinician Permision"
             settingTable.delegate = self
             settingTable.dataSource = self
+            switchPatient.isHidden = true
             loadList()
            
         } else{

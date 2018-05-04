@@ -23,8 +23,24 @@ class FourthViewController: UIViewController{
     @IBOutlet weak var label8: UILabel!
     //@IBOutlet weak var label7: UILabel!
     var permissions: [(clinician: String, permission : Bool)] = []
+    var hr_avg = "0"
+    var ecg_avg = "0"
+    var temp_avg = "0"
+    var dias_avg = "0"
+    var pleth_avg = "0"
+    var resp_avg = "0"
+    var oxy_avg = "0"
+    var sys_avg = "0"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.grabAverages(type: "Heart Rate")
+        self.grabAverages(type: "ECG")
+        self.grabAverages(type: "Temperature")
+        self.grabAverages(type: "Diastolic Blood")
+        self.grabAverages(type: "Plethysmograph")
+        self.grabAverages(type: "Respiration")
+        self.grabAverages(type: "Oxygen")
         if isClinician{
             let db = Firestore.firestore()
             _ = db.collection("users").document(user).getDocument { (document, error) in
@@ -50,12 +66,52 @@ class FourthViewController: UIViewController{
             self.buttons()
         }
     }
+    func grabAverages(type: String) {
+        let db = Firestore.firestore()
+        _ = db.collection("vitals").whereField("type", isEqualTo: type).whereField("senderId", isEqualTo: user).order(by: "date", descending: true).limit(to: 1).getDocuments {
+            
+            (querySnapshot, error) in
+            if let documents = querySnapshot?.documents {
+                //self.averages = []
+                for document in documents {
+                    let real_avg = Int(document.data()["average"] as! Double)
+                    let average = String(real_avg)
+                    switch type {
+                    case "Heart Rate":
+                        self.hr_avg = average
+                    case "ECG":
+                        self.ecg_avg = average
+                    case "Oxygen":
+                        self.oxy_avg = average
+                    case "Temperature":
+                        print("getting temp avg")
+                        self.temp_avg = average
+                    case "Respiration":
+                        self.resp_avg = average
+                    case "Systolic Blood":
+                        self.sys_avg = average
+                    case "Diastolic Blood":
+                        self.dias_avg = average
+                    case "Plethysmograph":
+                        self.pleth_avg = average
+                    default:
+                        print("error")
+                    }
+                }
+                self.buttons()
+            } else {
+                print("Error fetching documents: \(String(describing: error))")
+                return
+                
+            }
+        }
+    }
     private func buttons(){
         if perm {
             Button5.isHidden = false
             label5.isHidden = false
             Button5.frame.size = getSizeForButton()
-            Button5.setTitle("42", for: [])
+            Button5.setTitle(pleth_avg, for: [])
             Button5.titleLabel?.font = UIFont.systemFont(ofSize: Button5.frame.size.width/160 * 70.0)
             //Button5.frame.size = getSizeForButton()
             Button5.borderWidth = 7
@@ -66,7 +122,7 @@ class FourthViewController: UIViewController{
             label5.font = label5.font.withSize(Button5.frame.size.width/160 * 20.0)
             Button6.isHidden = false
             label6.isHidden = false
-            Button6.setTitle("532", for: [])
+            Button6.setTitle(resp_avg, for: [])
             Button6.frame.size = getSizeForButton()
             Button6.titleLabel?.font = UIFont.systemFont(ofSize: Button5.frame.size.width/160 * 70.0)
             Button6.borderWidth = 7
@@ -77,7 +133,7 @@ class FourthViewController: UIViewController{
             label6.font = label6.font.withSize(Button5.frame.size.width/160 * 20.0)
             Button7.isHidden = false
             label7.isHidden = false
-            Button7.setTitle("12", for: [])
+            Button7.setTitle(oxy_avg, for: [])
             Button7.frame.size = getSizeForButton()
             Button7.titleLabel?.font = UIFont.systemFont(ofSize: Button5.frame.size.width/160 * 70.0)
             Button7.borderWidth = 7
@@ -88,7 +144,7 @@ class FourthViewController: UIViewController{
             label7.font = label7.font.withSize(Button5.frame.size.width/160 * 20.0)
             Button8.isHidden = false
             label8.isHidden = false
-            Button8.setTitle("5", for: [])
+            Button8.setTitle(sys_avg, for: [])
             Button8.frame.size = getSizeForButton()
             Button8.titleLabel?.font = UIFont.systemFont(ofSize: Button5.frame.size.width/160 * 70.0)
             Button8.borderWidth = 7

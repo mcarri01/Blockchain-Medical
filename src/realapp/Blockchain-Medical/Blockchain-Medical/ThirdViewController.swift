@@ -112,7 +112,8 @@ class ThirdViewController: UIViewController {
         if perm {
             test.isHidden = false
             label1.isHidden = false
-            test.setTitle(hr_avg, for: [])
+            //test.setTitle(hr_avg, for: [])
+            test.setTitle("60", for: [])
             test.frame.size = getSizeForButton()
             test.titleLabel?.font = UIFont.systemFont(ofSize: test.frame.size.width/160 * 70.0)
             test.borderWidth = 7
@@ -148,7 +149,8 @@ class ThirdViewController: UIViewController {
             Button3.isHidden = false
             label3.isHidden = false
             print("setting temp button")
-            Button3.setTitle(temp_avg, for: [])
+            //Button3.setTitle(temp_avg, for: [])
+            Button3.setTitle("98", for: [])
             Button3.frame.size = getSizeForButton()
             Button3.titleLabel?.font = UIFont.systemFont(ofSize: test.frame.size.width/160 * 70.0)
             Button3.borderWidth = 7
@@ -164,7 +166,8 @@ class ThirdViewController: UIViewController {
         
         if perm {
             Button4.isHidden = false
-            Button4.setTitle("300", for: [])
+            //Button4.setTitle(dias_avg, for: [])
+            Button4.setTitle("80", for: [])
             Button4.frame.size = getSizeForButton()
             Button4.titleLabel?.font = UIFont.systemFont(ofSize: test.frame.size.width/160 * 70.0)
             Button4.borderWidth = 7

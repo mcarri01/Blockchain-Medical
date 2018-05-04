@@ -137,7 +137,7 @@ class FirstViewController: UIViewController , CVCalendarViewDelegate, CVCalendar
     func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool) {
         dailyReminders = []
         for reminder in reminders {
-            if (currentCalendar?.isDate(reminder.date, equalTo: dayView.date.convertedDate()! - 4 * 3600, toGranularity: .day))! {
+            if (currentCalendar?.isDate(reminder.date, equalTo: dayView.date.convertedDate()!, toGranularity: .day))! {
                 dailyReminders.append(reminder)
             }
         }
